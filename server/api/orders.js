@@ -4,6 +4,32 @@ const {
 } = require("../db");
 module.exports = router;
 
+router.get("/cart", async (req, res, next) => {
+  try {
+    const orders = await Order.findAll({
+      where: {
+        isCart: true,
+      },
+    });
+    res.json(orders);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/orders", async (req, res, next) => {
+  try {
+    const orders = await Order.findAll({
+      where: {
+        isCart: false,
+      },
+    });
+    res.json(orders);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/:userId/cart", async (req, res, next) => {
   try {
     const orders = await Order.findAll({
