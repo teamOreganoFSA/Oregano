@@ -1,5 +1,4 @@
 import React from "react";
-import Aos from "aos";
 import { Link } from "react-router-dom";
 /**
  * COMPONENT

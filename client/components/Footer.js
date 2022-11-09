@@ -12,7 +12,6 @@ const Footer = () => {
           <div className="location">
           <HiBuildingStorefront size={20} style={{ marginRight: "2rem" }} />
           <p>123 Plant Tree Avenue</p>
-            <p>Earth</p>
           </div>
         
           <div className="phone">
