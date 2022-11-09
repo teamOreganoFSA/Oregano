@@ -137,8 +137,11 @@ const seed = async () => {
     await Promise.all(seedProducts.map(prod => {
       return Product.create(prod);
     }))
-    await Promise.all(seedProducts.map(prod => {
-      return Product.create(prod);
+    await Promise.all(seedOrders.map(order => {
+      return Product.create(order);
+    }))
+    await Promise.all(seedOrderProduct.map(orderProd => {
+      return Product.create(orderProd);
     }))
   } catch (err) { console.error(err) }
 }
