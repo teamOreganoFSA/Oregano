@@ -1,58 +1,76 @@
-'use strict'
+const { green, red } = require('chalk');
+const { db, User, Product } = require('./server/db');
 
-const {db, models: {User} } = require('../server/db')
-
-/**
- * seed - this function clears the database, updates tables to
- *      match the models, and populates the database.
- */
-async function seed() {
-  await db.sync({ force: true }) // clears db and matches models to tables
-  console.log('db synced!')
-
-  // Creating Users
-  const users = await Promise.all([
-    User.create({ username: 'cody', password: '123' }),
-    User.create({ username: 'murphy', password: '123' }),
-  ])
-
-  console.log(`seeded ${users.length} users`)
-  console.log(`seeded successfully`)
-  return {
-    users: {
-      cody: users[0],
-      murphy: users[1]
-    }
+const seedUsers = [
+  {
+    role: 'Admin',
+    firstName: 'Adam',
+    lastName: 'Min',
+    email: 'ownersEmail@oregano.com',
+    password: 'password'
+  },
+  {
+    role: 'User',
+    firstName: 'Clark',
+    lastName: 'Kent',
+    email: 'shopper123@random.com',
+    password: 'password',
   }
-}
+]
 
-/*
- We've separated the `seed` function from the `runSeed` function.
- This way we can isolate the error handling and exit trapping.
- The `seed` function is concerned only with modifying the database.
-*/
-async function runSeed() {
-  console.log('seeding...')
+const seedProducts = [
+  {
+    name: 'Bamboo Pants',
+    description: 'Pants made out of bamboo',
+    inventoryQty: 10,
+    price: 100,
+    imageURL: 'http://www.sunprecautions.com/content/images/products/23600-1_9576_900x1200_100.jpg'
+  },
+  {
+    name: 'Bamboo Longsleeve Shirt',
+    description: 'Long sleeve shirt made out of bamboo',
+    inventoryQty: 20,
+    price: 80,
+    imageURL: 'http://tshirtluver.com/image/cache/bamboo-t-shirt-tlts00011bambootshirt-800x885.jpg'
+  },
+  {
+    name: 'Silkworm Shirt',
+    description: 'Longsleeve shirt made from silk.',
+    inventoryQty: 35,
+    price: 120,
+    imageURL: 'https://dm1ll01jrnse4.cloudfront.net/optimize/opti_755486098_img1.jpg'
+  },
+  {
+    name: 'Kale t-shirt',
+
+  }
+]
+
+const seed = async () => {
   try {
-    await seed()
-  } catch (err) {
-    console.error(err)
-    process.exitCode = 1
-  } finally {
-    console.log('closing db connection')
-    await db.close()
-    console.log('db connection closed')
-  }
+    await db.sync({ force: true });
+    await Promise.all(seedUsers.map(data => {
+      return User.create(data);
+    }))
+    await Promise.all(seedProducts.map(prod => {
+      return Product.create(prod);
+    }))
+  } catch (err) { console.error(err) }
 }
 
-/*
-  Execute the `seed` function, IF we ran this module directly (`node seed`).
-  `Async` functions always return a promise, so we can use `catch` to handle
-  any errors that might occur inside of `seed`.
-*/
-if (module === require.main) {
-  runSeed()
+module.exports = seed;
+// If this module is being required from another module, then we just export the
+// function, to be used as necessary. But it will run right away if the module
+// is executed directly (e.g. `node seed.js` or `npm run seed`)
+if (require.main === module) {
+  seed()
+    .then(() => {
+      console.log(green("Seeding success!"));
+      db.close();
+    })
+    .catch(err => {
+      console.error(red("Oh noes! Something went wrong!"));
+      console.error(err);
+      db.close();
+    });
 }
-
-// we export the seed function for testing purposes (see `./seed.spec.js`)
-module.exports = seed
