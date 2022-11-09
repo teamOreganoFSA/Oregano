@@ -114,14 +114,12 @@ padding:2rem;
 body{
   margin: -1rem;
   padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:#fff;
+
 }
 span{
   position: relative;
   display: inline-flex;
+  left:42%;
   width: 180px;
   height: 55px;
   margin: 0 15px;

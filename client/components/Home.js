@@ -40,7 +40,7 @@ export const Home = () => {
 
       <div className="shop">
         <body>
-       <span><a href='#'/></span>
+       <span><a href='/cart'/></span>
         </body>
         <br></br>
         <br></br>
