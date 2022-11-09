@@ -26,6 +26,19 @@ router.get("/products/men", async (req, res, next) => {
   }
 });
 
+router.get("/products/women", async (req, res, next) => {
+  try {
+    const products = await Product.findAll({
+      where: {
+        category: "WOMEN",
+      },
+    });
+    res.json(products);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/products/:productId", async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.productId);
