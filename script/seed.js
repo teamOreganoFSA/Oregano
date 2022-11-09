@@ -1,5 +1,7 @@
 const { green, red } = require('chalk');
 const { db, models: { User, Product } } = require('../server/db');
+
+// Users seed
 const seedUsers = [
   {
     firstName: 'Adam',
@@ -18,6 +20,8 @@ const seedUsers = [
     userType: 'USER',
   }
 ]
+
+// Products seed
 const seedProducts = [
   {
     category: 'MEN',
@@ -32,6 +36,7 @@ const seedProducts = [
     name: 'Bamboo Skirt',
     description: 'Skirt made out of bamboo',
     inventoryQuantity: 45,
+    price: 45,
     imageURL: 'https://cdn.shopify.com/s/files/1/0503/2601/2056/products/11_c7d6c37f-c61d-42ad-9c06-583b7f2ddfbf.jpg?v=1667420871&width=1800'
   },
   {
@@ -60,6 +65,7 @@ const seedProducts = [
   }
 ]
 
+// Oders seed
 const seedOrders = [
   {
     date: '2022-11-09 12:55:26 America/New_York',
@@ -78,11 +84,58 @@ const seedOrders = [
   }
 ]
 
+const seedOrderProduct = [
+  {
+    orderId: 1,
+    productId: 1,
+    quantity: 2
+  },
+  {
+    orderId: 1,
+    productId: 4,
+    quantity: 1
+  },
+  {
+    orderId: 1,
+    productId: 2,
+    quantity: 3
+  },
+  {
+    orderId: 2,
+    productId: 2,
+    quantity: 2
+  },
+  {
+    orderId: 2,
+    productId: 3,
+    quantity: 4
+  },
+  {
+    orderId: 2,
+    productId: 5,
+    quantity: 1
+  },
+  {
+    orderId: 3,
+    productId: 1,
+    quantity: 2
+  },
+  {
+    orderId: 3,
+    productId: 2,
+    quantity: 5
+  }
+]
+
+// seed function
 const seed = async () => {
   try {
     await db.sync({ force: true });
     await Promise.all(seedUsers.map(data => {
       return User.create(data);
+    }))
+    await Promise.all(seedProducts.map(prod => {
+      return Product.create(prod);
     }))
     await Promise.all(seedProducts.map(prod => {
       return Product.create(prod);
