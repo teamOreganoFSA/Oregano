@@ -114,7 +114,6 @@ padding:2rem;
 body{
   margin: -1rem;
   padding: 1rem;
-
 }
 span{
   position: relative;
@@ -125,7 +124,7 @@ span{
   margin: 0 15px;
   perspective: 1000px;
 }
-span a{
+span .shopnow{
   font-size: 19px;
   letter-spacing: 1px;
   transform-style: preserve-3d;
@@ -134,8 +133,8 @@ span a{
   font-family: 'Montserrat', sans-serif;
   
 }
-span a:before,
-span a:after{
+span .shopnow:before,
+span .shopnow:after{
   position: absolute;
   content: "Shop Now";
   height: 55px;
@@ -147,15 +146,15 @@ span a:after{
   box-sizing: border-box;
   border-radius: 5px;
 }
-span a:before{
+span .shopnow:before{
   color: #fff;
   background: #000;
   transform: rotateY(0deg) translateZ(25px);
 }
-span a:after{
+span .shopnow:after{
   color: #000;
   transform: rotateX(90deg) translateZ(25px);
 }
-span a:hover{
+span .shopnow:hover{
   transform: translateZ(-25px) rotateX(-90deg);
 }

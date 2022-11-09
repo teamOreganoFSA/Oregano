@@ -1,6 +1,6 @@
 import React from "react";
 import Aos from "aos";
-
+import { Link } from "react-router-dom";
 /**
  * COMPONENT
  */
@@ -40,7 +40,7 @@ export const Home = () => {
 
       <div className="shop">
         <body>
-       <span><a href='/cart'/></span>
+       <span><Link to ="/cart" className="shopnow" /></span>
         </body>
         <br></br>
         <br></br>
