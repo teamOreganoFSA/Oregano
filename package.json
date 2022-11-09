@@ -1,7 +1,8 @@
 {
-  "name": "grace_shopper",
+  "name": "grace-shopper",
   "version": "2.0.0",
-  "description": "e-commerce project'!",
+  "description": "Team Oregano E-commerce website",
+
   "main": "index.js",
   "scripts": {
     "build": "webpack",
