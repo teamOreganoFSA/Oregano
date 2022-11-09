@@ -39,6 +39,10 @@ const seedProducts = [
     inventoryQty: 35,
     price: 120,
     imageURL: 'https://dm1ll01jrnse4.cloudfront.net/optimize/opti_755486098_img1.jpg'
+  },
+  {
+    name: 'Kale t-shirt',
+
   }
 ]
 
