@@ -75,13 +75,3 @@ if (require.main === module) {
       db.close();
     });
 }
-(221 kB)
-http://www.sunprecautions.com/content/images/products/23600-1_9576_900x1200_100.jpg
-
-(230 kB)
-http://tshirtluver.com/image/cache/bamboo-t-shirt-tlts00011bambootshirt-800x885.jpg
-
-(41 kB)
-https://dm1ll01jrnse4.cloudfront.net/optimize/opti_755486098_img1.jpg
-
-(163 kB)

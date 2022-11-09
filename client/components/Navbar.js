@@ -30,9 +30,9 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          {isAuth.username ? (
+          {isAuth.email ? (
             <>
-              <p>{isAuth.username}</p>
+              <p>Welcome {isAuth.firstName}</p>
               <button
                 onClick={() => {
                   logoutHandler();
