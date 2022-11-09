@@ -6,10 +6,10 @@ const Order = db.define("order", {
     type: Sequelize.DATEONLY,
     allowNull: false,
   },
-  orderStatus: {
+  isCart: {
     type: Sequelize.BOOLEAN,
     allowNull: false,
-    defaultValue: false,
+    defaultValue: true,
   },
 });
 
