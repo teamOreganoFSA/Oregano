@@ -6,12 +6,14 @@ const seedUsers = [
     role: 'Admin',
     firstName: 'Adam',
     lastName: 'Min',
+    email: 'ownersEmail@oregano.com',
     password: 'password'
   },
   {
-    role: 'Admin',
+    role: 'User',
     firstName: 'Clark',
     lastName: 'Kent',
+    email: 'shopper123@random.com',
     password: 'password',
   }
 ]
@@ -30,6 +32,13 @@ const seedProducts = [
     inventoryQty: 20,
     price: 80,
     imageURL: 'http://tshirtluver.com/image/cache/bamboo-t-shirt-tlts00011bambootshirt-800x885.jpg'
+  },
+  {
+    name: 'Silkworm Shirt',
+    description: 'Longsleeve shirt made from silk.',
+    inventoryQty: 35,
+    price: 120,
+    imageURL: 'https://dm1ll01jrnse4.cloudfront.net/optimize/opti_755486098_img1.jpg'
   }
 ]
 
