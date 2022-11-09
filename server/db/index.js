@@ -5,15 +5,15 @@ const db = require("./db");
 const User = require("./models/User");
 const Order = require("./models/Order");
 const Product = require("./models/Product");
-const OrderProducts = require("./models/OrderProducts");
+const OrderProduct = require("./models/OrderProduct");
 
 User.hasMany(Order);
 Order.belongsTo(User, {
   foreignKey: "userId",
 });
 
-Order.belongsToMany(Product, { through: OrderProducts });
-Product.belongsToMany(Order, { through: OrderProducts });
+Order.belongsToMany(Product, { through: OrderProduct });
+Product.belongsToMany(Order, { through: OrderProduct });
 
 module.exports = {
   db,
@@ -21,6 +21,6 @@ module.exports = {
     User,
     Order,
     Product,
-    OrderProducts,
+    OrderProduct,
   },
 };
