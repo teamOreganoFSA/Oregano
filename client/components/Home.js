@@ -1,4 +1,5 @@
 import React from "react";
+import Aos from "aos";
 
 /**
  * COMPONENT
@@ -24,6 +25,27 @@ export const Home = () => {
       <br></br>
       <br></br>
       <br></br>
+      <div data-aos="fade-right"
+     data-aos-offset="250"
+     data-aos-easing="ease-in-sine"
+     data-aos-duration="1000">
+        <h2 >What Is Oregano?</h2>
+      
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+
+      <div className="shop">
+        <body>
+       <span><a href='#'/></span>
+        </body>
+        <br></br>
+        <br></br>
+        <br></br>
+      </div>
     </div>
   );
 };
