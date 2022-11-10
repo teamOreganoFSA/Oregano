@@ -1,7 +1,7 @@
 const { green, red } = require('chalk');
-const { db, models: { User, Product, Order, OrderProduct } } = require('../server/db');
+const { db, models: { User, Product,Order,OrderProduct} } = require('../server/db');
 
-// Users seed
+
 const seedUsers = [
   {
     firstName: 'Adam',
@@ -29,7 +29,7 @@ const seedProducts = [
     description: 'Pants made out of bamboo',
     inventoryQuantity: 10,
     price: 100,
-    imageURL: 'https://cdn.shopify.com/s/files/1/0503/2601/2056/products/6_9a82250e-1b30-4aa7-8983-c1eb9627d491.jpg?v=1667418844&width=1800'
+    imageURL: 'https://cdn.shopify.com/s/files/1/0503/2601/2056/products/6_9a82250e-1b30-4aa7-8983-c1eb9627d491.jpg?v=1667418844&width=1800',
   },
   {
     category: 'WOMEN',

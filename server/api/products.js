@@ -1,19 +1,19 @@
 const router = require("express").Router();
-const {
-  models: { Product },
-} = require("../db");
+const {models: { Product }} = require("../db");
 module.exports = router;
 
-router.get("/products", async (req, res, next) => {
+// /PRODUCT
+router.get("/", async (req, res, next) => {
   try {
+    console.log("hello world");
     const products = await Product.findAll();
     res.json(products);
   } catch (err) {
     next(err);
   }
 });
-
-router.get("/products/men", async (req, res, next) => {
+//GET /PRODUCT/MEN
+router.get("/men", async (req, res, next) => {
   try {
     const products = await Product.findAll({
       where: {
@@ -26,7 +26,8 @@ router.get("/products/men", async (req, res, next) => {
   }
 });
 
-router.get("/products/women", async (req, res, next) => {
+// GET /PRODUCT/WOMEN
+router.get("/women", async (req, res, next) => {
   try {
     const products = await Product.findAll({
       where: {
@@ -39,7 +40,8 @@ router.get("/products/women", async (req, res, next) => {
   }
 });
 
-router.get("/products/:productId", async (req, res, next) => {
+// GET /PRODUCT/:ID
+router.get("/:productId", async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.productId);
     res.json(product);
