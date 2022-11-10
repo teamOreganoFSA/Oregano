@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart, FaHome, FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,6 +10,7 @@ const Navbar = () => {
   const logoutHandler = () => {
     dispatch(logout());
   };
+
   return (
     <div className="header">
       <Link to="/">
