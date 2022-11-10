@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Card = (props) => {
+const SingleProductViewCard = (props) => {
   return (
     <div>
       <div className='card' data-aos="zoom-in"
@@ -18,4 +18,4 @@ const Card = (props) => {
   )
 }
 
-export default Card
+export default SingleProductViewCard
