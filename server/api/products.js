@@ -50,3 +50,27 @@ router.get("/:productId", async (req, res, next) => {
     next(err);
   }
 });
+
+// POST /product/add
+router.post("/add", async (req, res, next) => {
+  try {
+    const addProduct = req.body;
+    Product.create(addProduct);
+    res.json(addProduct);
+  } catch (err) { next(err) }
+})
+
+router.put("/:productId/edit", async (req, res, next) => {
+  try {
+    const oldProd = await Product.findByPk(req.params.productId);
+    res.json(oldProd.update(req.body));
+  } catch (err) { next(err) }
+})
+
+router.delete("/:productId/remove", async (req, res, next) => {
+  try {
+    const prod = await Product.findByPk(req.params.productId);
+    await prod.destroy();
+    res.send(prod);
+  } catch (err) { next(err) }
+})
