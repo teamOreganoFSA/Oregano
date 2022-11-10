@@ -54,6 +54,7 @@ router.get("/women", async (req, res, next) => {
   }
 });
 
+
 //GET /api/products/:productId
 router.get("/:productId", async (req, res, next) => {
   try {
