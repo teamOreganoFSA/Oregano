@@ -15,7 +15,29 @@ const seedUsers = [
     lastName: 'Kent',
     email: 'shopper123@random.com',
     password: 'password',
-  }
+  },
+  {
+    role: 'User',
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'johndoe@shopper.com',
+    password: 'password',
+  },
+  {
+    role: 'User',
+    firstName: 'Jill',
+    lastName: 'Jackson',
+    email: 'jjackson@shopper.com',
+    password: 'password',
+  },
+  {
+    role: 'User',
+    firstName: 'Jan',
+    lastName: 'Doe',
+    email: 'janedoe@shopper.com',
+    password: 'password',
+  },
+
 ]
 
 const seedProducts = [
