@@ -19,6 +19,10 @@ const Product = db.define("product", {
     type: Sequelize.FLOAT,
     allowNull: false,
   },
+  category: {
+    type: Sequelize.ENUM("MEN", "WOMEN"),
+    allowNull: false,
+  },
   imageURL: {
     type: Sequelize.STRING,
     allowNull: false,

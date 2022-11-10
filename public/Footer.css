@@ -18,13 +18,12 @@
 }
 
 .location{
-  display: flex;
-  margin-bottom:0.8rem;
+  display:flex
 }
 
 .location p {
   line-height:30px
-  1.2rem;
+  2rem;
 }
 
 .right{
@@ -35,6 +34,4 @@
   padding:1rem;
 }
 
-.social{
-  padding-bottom:1rem;
-}
+

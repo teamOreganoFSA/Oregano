@@ -4,6 +4,7 @@
   margin: 0.5rem;
 }
 
+
 .signupForm {
   display: flex;
   flex-direction: column;
@@ -24,3 +25,4 @@
 }
 .btn {
 }
+

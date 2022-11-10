@@ -28,6 +28,7 @@ export const me = () => async (dispatch) => {
   }
 };
 
+
 export const authenticate =
   (method, email, password, firstName, lastName, address) =>
   async (dispatch) => {
@@ -45,6 +46,7 @@ export const authenticate =
       return dispatch(setAuth({ error: authError }));
     }
   };
+
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
