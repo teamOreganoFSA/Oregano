@@ -39,7 +39,7 @@ export const Home = () => {
 
       <div className="shop">
         <body>
-       <span><Link to ="/cart" className="shopnow" /></span>
+       <span><Link to ="/allproducts" className="shopnow" /></span>
         </body>
         <br></br>
         <br></br>

@@ -11,8 +11,8 @@ app.use(morgan('dev'))
 app.use(express.json())
 
 // auth and api routes
-app.use('/auth', require('./auth'))
 app.use('/api', require('./api'))
+app.use('/auth', require('./auth'))
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, '..', 'public/index.html')));
 
@@ -24,6 +24,7 @@ app.use((req, res, next) => {
   if (path.extname(req.path).length) {
     const err = new Error('Not found')
     err.status = 404
+    console.log('after error>>>>>>>>>>>>>>>>')
     next(err)
   } else {
     next()
