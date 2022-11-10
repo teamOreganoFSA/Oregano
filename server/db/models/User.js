@@ -36,7 +36,6 @@ const User = db.define("user", {
   userType: {
     type: Sequelize.ENUM("USER", "ADMIN"),
     defaultValue: "USER",
-    allowNull: false,
   },
   address: {
     type: Sequelize.TEXT,
@@ -65,7 +64,7 @@ User.prototype.generateToken = function () {
  * classMethods
  */
 User.authenticate = async function ({ email, password }) {
-  const user = await this.findOne({ where: { email} });
+  const user = await this.findOne({ where: { email } });
   if (!user || !(await user.correctPassword(password))) {
     const error = Error("Incorrect email/password");
     error.status = 401;
