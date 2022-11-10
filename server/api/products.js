@@ -73,14 +73,14 @@ router.post("/auth", requireToken, async (req, res, next) => {
   } catch (err) { next(err) }
 })
 
-router.put("/auth/:productId/edit", requireToken, async (req, res, next) => {
+router.put("/auth/:productId/", requireToken, async (req, res, next) => {
   try {
     const oldProd = await Product.findByPk(req.params.productId);
     res.json(oldProd.update(req.body));
   } catch (err) { next(err) }
 })
 
-router.delete("/auth/:productId/remove", requireToken, async (req, res, next) => {
+router.delete("/auth/:productId/", requireToken, async (req, res, next) => {
   try {
     const prod = await Product.findByPk(req.params.productId);
     await prod.destroy();
