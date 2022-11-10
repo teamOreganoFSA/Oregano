@@ -3,6 +3,7 @@ import axios from "axios";
  * ACTION TYPES
  */
 const FETCH_ALL_PRODUCTS = "FETCH_ALL_PRODUCTS";
+const ADD_NEW_PRODUCT = "ADD_NEW_PRODUCT";
 
 /**
  * ACTION CREATORS
@@ -12,6 +13,10 @@ const _fetchAllProducts = (products) => ({
   products,
 });
 
+const _addNewProduct = (products) => ({
+  type: FETCH_ALL_PRODUCTS,
+  products,
+});
 
 /**
  * THUNK CREATORS
@@ -21,8 +26,9 @@ const _fetchAllProducts = (products) => ({
 export const fetchAllProducts = (category) => {
   return async (dispatch) => {
     try {
-      const url = category? `/api/products/${category}` : `/api/products`
-      const { data } = await axios.get(url)
+      const url = category ? `/api/products/${category}` : `/api/products`;
+      const { data } = await axios.get(url);
+
       dispatch(_fetchAllProducts(data));
     } catch (error) {
       console.log("Unable to fetch products");
@@ -31,6 +37,17 @@ export const fetchAllProducts = (category) => {
   };
 };
 
+export const addNewProduct = () => {
+  return async (dispatch) => {
+    try {
+      const data = await axios.post("/api/products");
+      console.log("data==>", data);
+    } catch (error) {
+      console.log("Unable to add product");
+      console.error(error);
+    }
+  };
+};
 
 /**
  * REDUCER
