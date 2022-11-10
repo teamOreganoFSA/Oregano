@@ -8,6 +8,7 @@ import { me } from "./store";
 import AllProduct from "./components/AllProducts";
 import AdminDash from "./components/AdminDash";
 import NewProductForm from "./components/NewProductForm";
+import SingleProduct from "./components/SingleProduct";
 
 /**
  * COMPONENT
@@ -27,6 +28,7 @@ class Routes extends Component {
           <Route path="/cart" component={Cart} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route exact path="/products/single/:id" component={SingleProduct}/>
           <Route exact path="/products" component={AllProduct} />
           <Route path="/products/:category" component={AllProduct} />
           <Route path="/admin" component={AdminDash} />
