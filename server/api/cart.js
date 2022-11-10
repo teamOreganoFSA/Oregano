@@ -4,12 +4,12 @@ const {
 } = require("../db");
 module.exports = router;
 
-// GET /api/orders
+// GET /api/cart
 router.get("/", async (req, res, next) => {
   try {
     const orders = await Order.findAll({
       where: {
-        isCart: false,
+        isCart: true,
       },
     });
     res.json(orders);
@@ -18,13 +18,13 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// GET /api/orders/:userId
+// GET /api/cart/:userId
 router.get("/:userId", async (req, res, next) => {
   try {
     const orders = await Order.findAll({
       where: {
         userId: req.params.userId,
-        isCart: false,
+        isCart: true,
       },
     });
     res.json(orders);
