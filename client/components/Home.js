@@ -1,5 +1,4 @@
 import React from "react";
-import Aos from "aos";
 import { Link } from "react-router-dom";
 /**
  * COMPONENT
@@ -16,8 +15,8 @@ export const Home = () => {
         <h3>Live Organically</h3>
       </div>
       <div className="shop">
-        <h3 id="men">Shop Men</h3>
-        <h3 id="women">Shop Women</h3>
+       <Link to ="/products/MEN"> <h3 id="men">Shop Men</h3></Link>
+        <Link to ="/products/WOMEN"><h3 id="women">Shop Women</h3></Link>
       </div>
       <br></br>
       <br></br>
@@ -40,7 +39,7 @@ export const Home = () => {
 
       <div className="shop">
         <body>
-       <span><Link to ="/cart" className="shopnow" /></span>
+       <span><Link to ="/allproducts" className="shopnow" /></span>
         </body>
         <br></br>
         <br></br>

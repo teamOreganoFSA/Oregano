@@ -1,7 +1,6 @@
 import React from "react";
-import { HiBuildingStorefront } from "react-icons/hi2";
-import { FaPhone, FaMailBulk, FaGithub } from "react-icons/fa";
-// import "./componentStyles/Footer.css"
+import { FaPhone, FaMailBulk, FaGithub, FaHome } from "react-icons/fa";
+
 
 const Footer = () => {
   return (
@@ -9,11 +8,10 @@ const Footer = () => {
       <div className="footer-container">
         
         <div className="left">
-          <div className="location">
-          <HiBuildingStorefront size={20} style={{ marginRight: "2rem" }} />
+          { <div className="location">
+          <FaHome size={20} style={{ marginRight: "2rem" }} />
           <p>123 Plant Tree Avenue</p>
-            <p>Earth</p>
-          </div>
+          </div> }
         
           <div className="phone">
             <h4>
