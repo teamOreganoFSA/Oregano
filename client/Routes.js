@@ -6,6 +6,8 @@ import Cart from "./components/Cart";
 import Home from "./components/Home";
 import { me } from "./store";
 import AllProduct from "./components/AllProducts";
+import AdminDash from "./components/AdminDash";
+import NewProductForm from "./components/NewProductForm";
 import SingleProduct from "./components/SingleProduct";
 
 /**
@@ -29,6 +31,8 @@ class Routes extends Component {
           <Route exact path="/products/single/:id" component={SingleProduct}/>
           <Route exact path="/products" component={AllProduct} />
           <Route path="/products/:category" component={AllProduct} />
+          <Route path="/admin" component={AdminDash} />
+          <Route path="/new-product" component={NewProductForm} />
         </Switch>
       </div>
     );

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store";
 
 const Navbar = () => {
-  const isAuth = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const logoutHandler = () => {
     dispatch(logout());
@@ -31,9 +31,12 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          {isAuth.email ? (
+          {auth.email ? (
             <>
-              <p>Welcome {isAuth.firstName}</p>
+              <p>Welcome {auth.firstName}</p>
+              {auth.userType === "ADMIN" && (
+                <Link to="/admin">Admin Dashboard</Link>
+              )}
               <button
                 onClick={() => {
                   logoutHandler();
