@@ -2,27 +2,30 @@ import React from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
 import { fetchAllProducts } from "../store/allProducts";
+import { Link } from "react-router-dom";
 
 export class AllProducts extends React.Component {
   componentDidMount() {
-   
     this.props.fetchAllProducts(this.props.match.params.category);
   }
 
   render() {
     const products = this.props.products;
-    console.log(this.props);
+    console.log(products)
     return (
       <div className="wrapper">
         <div>
           {products.map((product) => (
-            <Card
-              key = {product.id}
-              imageURL={product.imageURL}
-              name={product.name}
-              price={product.price}
-              description ={product.description}
-            />
+            <div>
+              <Card
+                key={product.id}
+                imageURL={product.imageURL}
+                name={product.name}
+                price={product.price}
+                description={product.description}
+                id = {product.id}
+              />
+            </div>
           ))}
         </div>
       </div>

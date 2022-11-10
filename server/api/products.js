@@ -2,10 +2,10 @@ const router = require("express").Router();
 const {models: { Product }} = require("../db");
 module.exports = router;
 
-// /PRODUCT
+
+// /PRODUCTS
 router.get("/", async (req, res, next) => {
   try {
-    console.log("hello world");
     const products = await Product.findAll();
     console.log('Printing products: ', products);
     res.json(products);
@@ -13,7 +13,19 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
-//GET /PRODUCT/MEN
+
+// GET /PRODUCTS/single/:ID
+//needed to do because category is also a params
+router.get("/single/:productId", async (req, res, next) => {
+  try {
+    const product = await Product.findByPk(req.params.productId);
+    res.json(product);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//GET /PRODUCTS/MEN
 router.get("/men", async (req, res, next) => {
   try {
     const products = await Product.findAll({
@@ -27,7 +39,7 @@ router.get("/men", async (req, res, next) => {
   }
 });
 
-// GET /PRODUCT/WOMEN
+// GET /PRODUCTS/WOMEN
 router.get("/women", async (req, res, next) => {
   try {
     const products = await Product.findAll({
@@ -40,6 +52,7 @@ router.get("/women", async (req, res, next) => {
     next(err);
   }
 });
+
 
 // GET /PRODUCT/:ID
 router.get("/:productId", async (req, res, next) => {
@@ -74,3 +87,4 @@ router.delete("/:productId/remove", async (req, res, next) => {
     res.send(prod);
   } catch (err) { next(err) }
 })
+
