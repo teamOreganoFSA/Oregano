@@ -23,10 +23,8 @@ export class AllProducts extends React.Component {
                 name={product.name}
                 price={product.price}
                 description={product.description}
+                id = {product.id}
               />
-              <Link to={`/products/single/${product.id}`}>
-                <button className="card_button">View Product</button>
-              </Link>
             </div>
           ))}
         </div>
