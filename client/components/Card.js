@@ -12,9 +12,9 @@ const Card = (props) => {
           <h2 className="card_name">{props.name}</h2>
           <h3 className="card_price">{props.price}</h3>
           <h4 className="card_description">{props.description}</h4>
-          <button className="card_button">Add to Cart</button>
+          <button className="card_btn">Add to Cart</button>
           <Link to={`/products/single/${props.id}`}>
-            <button className="card_button">View Product</button>
+            <button className="card_btn">View Product</button>
           </Link>
         </div>
       </div>
