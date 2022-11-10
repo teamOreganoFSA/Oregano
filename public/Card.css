@@ -31,6 +31,9 @@
     margin-bottom: 0.5rem;
   }
 
+  .card .card_description{
+    line-height: 1.2rem;
+  }
  
   .card .card_price {
     font-size: 1.4rem;

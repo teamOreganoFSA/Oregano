@@ -1,5 +1,5 @@
 const { green, red } = require('chalk');
-const { db, models: { User, Product } } = require('../server/db');
+const { db, models: { User, Product,Order,OrderProduct} } = require('../server/db');
 
 
 const seedUsers = [

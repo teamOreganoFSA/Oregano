@@ -9,6 +9,7 @@ const Card = (props) => {
       <div className='card_body'>
         <h2 className='card_name'>{props.name}</h2>
         <h3 className='card_price'>{props.price}</h3>
+        <h4 className='card_description'>{props.description}</h4>
       <button className='card_button'>Add to Cart</button>
         <button className='card_button'>View Product</button>
       </div>

@@ -15,8 +15,8 @@ export const Home = () => {
         <h3>Live Organically</h3>
       </div>
       <div className="shop">
-        <h3 id="men">Shop Men</h3>
-        <h3 id="women">Shop Women</h3>
+       <Link to ="/products/MEN"> <h3 id="men">Shop Men</h3></Link>
+        <Link to ="/products/WOMEN"><h3 id="women">Shop Women</h3></Link>
       </div>
       <br></br>
       <br></br>

@@ -2,7 +2,7 @@ import axios from "axios";
 /**
  * ACTION TYPES
  */
-const FETCH_ALL_PRODUCTS = "FECTH_ALL_PRODUCTS";
+const FETCH_ALL_PRODUCTS = "FETCH_ALL_PRODUCTS";
 
 /**
  * ACTION CREATORS
@@ -12,13 +12,17 @@ const _fetchAllProducts = (products) => ({
   products,
 });
 
+
 /**
  * THUNK CREATORS
  */
-export const fetchAllProducts = () => {
+//all products WITH FILTER MEN OR WOMEN CONDITIONAL
+
+export const fetchAllProducts = (category) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get("/api/products");
+      const url = category? `/api/products/${category}` : `/api/products`
+      const { data } = await axios.get(url)
       dispatch(_fetchAllProducts(data));
     } catch (error) {
       console.log("Unable to fetch products");
@@ -26,6 +30,7 @@ export const fetchAllProducts = () => {
     }
   };
 };
+
 
 /**
  * REDUCER

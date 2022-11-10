@@ -5,26 +5,38 @@ import { fetchAllProducts } from "../store/allProducts";
 
 export class AllProducts extends React.Component {
   componentDidMount() {
-    this.props.fetchAllProducts();
-    console.log(this.state);
+   
+    this.props.fetchAllProducts(this.props.match.params.category);
   }
 
   render() {
+    const products = this.props.products;
+    console.log(this.props);
     return (
       <div className="wrapper">
-        <Card />
+        <div>
+          {products.map((product) => (
+            <Card
+              key = {product.id}
+              imageURL={product.imageURL}
+              name={product.name}
+              price={product.price}
+              description ={product.description}
+            />
+          ))}
+        </div>
       </div>
     );
   }
 }
 const mapStateToProps = (state) => {
   return {
-    products: state.products,
+    products: state.allProducts,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAllProducts: () => dispatch(fetchAllProducts()),
+    fetchAllProducts: (category) => dispatch(fetchAllProducts(category)),
   };
 };
 
