@@ -4,14 +4,14 @@ const Order = require("./Order");
 const Product = require("./Product");
 
 const OrderProducts = db.define("orderProducts", {
-  OrderId: {
+  orderId: {
     type: Sequelize.INTEGER,
     references: {
       model: Order,
       key: "id",
     },
   },
-  ProductId: {
+  productId: {
     type: Sequelize.INTEGER,
     references: {
       model: Product,
