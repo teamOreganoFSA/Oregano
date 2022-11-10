@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addNewProduct } from "../store/allProducts";
 
 const NewProductForm = () => {
+  const dispatch = useDispatch();
   const [formValues, setFormValues] = useState({
     name: "",
     description: "",
@@ -11,13 +14,12 @@ const NewProductForm = () => {
   });
 
   const handleChange = (e) => {
-    console.log(e.target.name);
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
+    dispatch(addNewProduct(formValues));
   };
   return (
     <div>

@@ -13,9 +13,9 @@ const _fetchAllProducts = (products) => ({
   products,
 });
 
-const _addNewProduct = (products) => ({
-  type: FETCH_ALL_PRODUCTS,
-  products,
+const _addNewProduct = (product) => ({
+  type: ADD_NEW_PRODUCT,
+  product,
 });
 
 /**
@@ -37,10 +37,11 @@ export const fetchAllProducts = (category) => {
   };
 };
 
-export const addNewProduct = () => {
+export const addNewProduct = (product) => {
   return async (dispatch) => {
     try {
-      const data = await axios.post("/api/products");
+      const { data } = await axios.post("/api/products", product);
+      dispatch(_addNewProduct(data));
       console.log("data==>", data);
     } catch (error) {
       console.log("Unable to add product");
@@ -57,6 +58,8 @@ export default function (state = [], action) {
   switch (action.type) {
     case FETCH_ALL_PRODUCTS:
       return action.products;
+    case ADD_NEW_PRODUCT:
+      return [...state, action.product];
     default:
       return state;
   }
