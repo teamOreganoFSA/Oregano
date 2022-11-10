@@ -86,3 +86,14 @@
     }
   }
 
+    .card .inner{
+      overflow:hidden;
+    }
+
+    .card .inner img{
+      transition: all 1.5s ease;
+    }
+
+    .card .inner:hover img{
+      transform:scale(1.5)
+    }
