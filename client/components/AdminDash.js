@@ -16,10 +16,12 @@ const AdminDash = () => {
     <div className="dash-container">
       <div className="products-container">
         {allProducts.map((product) => (
-          <div className="single-product">
+          <div key={product.id} className="single-product">
             <p>{product.name}</p>
             <img src={product.imageURL} alt={product.description} />
-            <button>Edit Product</button>
+            <Link to={`/edit-product/${product.id}`}>
+              <button>Edit Product</button>
+            </Link>
           </div>
         ))}
       </div>

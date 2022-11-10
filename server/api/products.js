@@ -8,10 +8,11 @@ const requireToken = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     const user = await User.findByToken(token);
-    if(user){
-      req.user = user;
-      next();
-    }
+    // if(user){
+    //   req.user = user;
+    //   next();
+    // }
+    next();
   } catch (err) { next(err) }
 }
 
