@@ -29,9 +29,15 @@ export const me = () => async (dispatch) => {
 };
 
 export const authenticate =
-  (email, password, method) => async (dispatch) => {
+  (method, email, password, firstName, lastName, address) =>
+  async (dispatch) => {
     try {
-      const res = await axios.post(`/auth/${method}`, { email, password });
+      const res = await axios.post(
+        `/auth/${method}`,
+        method === "login"
+          ? { email, password }
+          : { email, password, firstName, lastName, address }
+      );
       window.localStorage.setItem(TOKEN, res.data.token);
       dispatch(me());
       history.push("/");

@@ -1,9 +1,26 @@
-.signup{
- text-decoration: underline; 
-font-weight: 600;
- margin:0.5rem;
+.signup {
+  text-decoration: underline;
+  font-weight: 600;
+  margin: 0.5rem;
 }
 
-.btn{
- 
+.signupForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid black;
+}
+.btn {
 }
