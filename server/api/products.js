@@ -4,17 +4,28 @@ const {
 } = require("../db");
 module.exports = router;
 
-//GET /api/products
+
 router.get("/", async (req, res, next) => {
   try {
-    console.log("hello world");
     const products = await Product.findAll();
     res.json(products);
   } catch (err) {
     next(err);
   }
 });
-//GET /api/products/men
+
+// GET /PRODUCTS/single/:ID
+//needed to do because category is also a params
+router.get("/single/:productId", async (req, res, next) => {
+  try {
+    const product = await Product.findByPk(req.params.productId);
+    res.json(product);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//GET /PRODUCTS/MEN
 router.get("/men", async (req, res, next) => {
   try {
     const products = await Product.findAll({
@@ -28,7 +39,7 @@ router.get("/men", async (req, res, next) => {
   }
 });
 
-//GET /api/products/men
+// GET /PRODUCTS/WOMEN
 router.get("/women", async (req, res, next) => {
   try {
     const products = await Product.findAll({
@@ -64,3 +75,4 @@ router.post("/:productId", async (req, res, next) => {
     next(err);
   }
 });
+
