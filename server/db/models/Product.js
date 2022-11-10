@@ -9,7 +9,6 @@ const Product = db.define("product", {
   description: {
     type: Sequelize.TEXT,
     allowNull: false,
-    defaultValue: false,
   },
   inventoryQuantity: {
     type: Sequelize.INTEGER,
@@ -25,7 +24,6 @@ const Product = db.define("product", {
   },
   imageURL: {
     type: Sequelize.STRING,
-    allowNull: false,
     defaultValue:
       "https://nonprofitquarterly.org/wp-content/uploads/2020/02/comic_image_missing.jpg",
   },

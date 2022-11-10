@@ -4,11 +4,10 @@ const db = require("../db");
 const Order = db.define("order", {
   date: {
     type: Sequelize.DATEONLY,
-    allowNull: false,
+    defaultValue: Sequelize.NOW,
   },
   isCart: {
     type: Sequelize.BOOLEAN,
-    allowNull: false,
     defaultValue: true,
   },
 });
