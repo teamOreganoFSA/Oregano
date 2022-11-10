@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addNewProduct } from "../store/allProducts";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
-const NewProductForm = () => {
+const EditProduct = (props) => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [formValues, setFormValues] = useState({
     name: "",
     description: "",
@@ -13,24 +16,40 @@ const NewProductForm = () => {
     imageURL: "",
   });
 
+  useEffect(() => {
+    loadProduct(props.match.params.id);
+  }, []);
+
+  const loadProduct = async (id) => {
+    const { data } = await axios.get(`/api/products/single/${id}`);
+    setFormValues(data);
+  };
+
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(addNewProduct(formValues));
+    try {
+      // await axios.put(
+      //   `/api/products/auth/${props.match.params.id}`,
+      //   formValues
+      // );
+      history.push("/admin");
+    } catch (error) {
+      console.log(error);
+    }
   };
-
   return (
-    <div>
-      <h2>New Product Form</h2>
+    <div style={{ display: "flex" }}>
+      <h2>Edit Product Form</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name</label>
           <input name="name" onChange={handleChange} value={formValues.name} />
           <label htmlFor="description">Description</label>
-          <input
+          <textarea
             name="description"
             onChange={handleChange}
             value={formValues.description}
@@ -60,11 +79,15 @@ const NewProductForm = () => {
             value={formValues.imageURL}
           />
         </div>
-
-        <button type="submit">Add Product</button>
+        <button type="submit">Save Changes</button>
       </form>
+      <img
+        style={{ height: "200px" }}
+        src={formValues.imageURL}
+        alt={formValues.description}
+      />
     </div>
   );
 };
 
-export default NewProductForm;
+export default EditProduct;

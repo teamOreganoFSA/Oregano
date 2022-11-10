@@ -9,6 +9,7 @@ import AllProduct from "./components/AllProducts";
 import AdminDash from "./components/AdminDash";
 import NewProductForm from "./components/NewProductForm";
 import SingleProduct from "./components/SingleProduct";
+import EditProduct from "./components/EditProduct";
 
 /**
  * COMPONENT
@@ -28,11 +29,12 @@ class Routes extends Component {
           <Route path="/cart" component={Cart} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route exact path="/products/single/:id" component={SingleProduct}/>
+          <Route exact path="/products/single/:id" component={SingleProduct} />
           <Route exact path="/products" component={AllProduct} />
           <Route path="/products/:category" component={AllProduct} />
           <Route path="/admin" component={AdminDash} />
           <Route path="/new-product" component={NewProductForm} />
+          <Route path="/edit-product/:id" component={EditProduct} />
         </Switch>
       </div>
     );
