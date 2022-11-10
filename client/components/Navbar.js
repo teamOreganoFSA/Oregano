@@ -1,47 +1,60 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FaShoppingCart, FaHome, FaUser } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../store";
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>FS-App-Template</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-)
+const Navbar = () => {
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
 
-/**
- * CONTAINER
- */
-const mapState = state => {
-  return {
-    isLoggedIn: !!state.auth.id
-  }
-}
+  return (
+    <div className="header">
+      <Link to="/">
+        <img src="/picture/logo.png"></img>
+      </Link>
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
-}
+      <ul className="nav-menu">
+        <li>
+          <Link to="/">
+            Home{"  "}
+            <FaHome />{" "}
+          </Link>
+        </li>
+        <li>
+          <Link to="/cart">
+            Cart{"  "}
+            <FaShoppingCart />{" "}
+          </Link>
+        </li>
+        <li>
+          {auth.email ? (
+            <>
+              <p>Welcome {auth.firstName}</p>
+              {auth.userType === "ADMIN" && (
+                <Link to="/admin">Admin Dashboard</Link>
+              )}
+              <button
+                onClick={() => {
+                  logoutHandler();
+                }}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/login">
+              Login/SignUp{"  "}
+              <FaUser />
+            </Link>
+          )}
+        </li>
+      </ul>
+    </div>
+  );
+};
 
-export default connect(mapState, mapDispatch)(Navbar)
+export default Navbar;

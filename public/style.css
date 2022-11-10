@@ -1,6 +1,12 @@
-body {
-  font-family: sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Outfit", sans-serif;
 }
+
+
 
 a {
   text-decoration: none;
@@ -10,12 +16,16 @@ label {
   display: block;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
 form div {
   margin: 1em;
   display: inline-block;
 }
+
+h5{
+  font-weight: lighter;
+}
+
+ul {
+  list-style-type: none;
+}
+

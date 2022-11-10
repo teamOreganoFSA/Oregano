@@ -1,0 +1,37 @@
+.footer{
+  width : 100%;
+  padding:1rem 0;
+  background-color: rgba(19, 19, 19, 0.174)
+}
+
+.footer container{
+  max-width:1140px;
+  margin:auto;
+}
+
+.left{
+  height:100%;
+  max-width: 100%;
+  display:flex;
+  flex-direction:column;
+  padding:1rem;
+}
+
+.location{
+  display:flex
+}
+
+.location p {
+  line-height:30px
+  2rem;
+}
+
+.right{
+  height:100%;
+  max-width: 100%;
+  display:flex;
+  flex-direction:column;
+  padding:1rem;
+}
+
+
