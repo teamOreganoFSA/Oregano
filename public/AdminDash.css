@@ -1,0 +1,32 @@
+.products-container {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  overflow-x: scroll;
+  height: 200px;
+  margin-bottom: 20px;
+}
+.products-container img {
+  height: 150px;
+}
+
+.single-product {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+  border-radius: 20px;
+  height: 100%;
+  min-width: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+.dash-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-container button {
+  margin: auto;
+  width: 150px;
+}
