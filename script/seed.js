@@ -49,8 +49,8 @@ const seedProducts = [
   },
   {
     category: 'MEN',
-    name: 'Silk Shirt',
-    description: 'Longsleeve shirt made from silk.',
+    name: 'Silk T-shirt',
+    description: 'T-shirt made from silk.',
     inventoryQuantity: 35,
     price: 120,
     imageURL: 'https://cdn.shopify.com/s/files/1/0503/2601/2056/products/RC1210M_HEATHEREDGREY_244_712eebd3-676b-4aba-8877-af5530485149.jpg?v=1655328410&width=1800'
