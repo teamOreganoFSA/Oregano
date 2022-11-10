@@ -1,5 +1,5 @@
 const { green, red } = require('chalk');
-const { db, models: { User, Product } } = require('../server/db');
+const { db, models: { User, Product, Order, OrderProduct } } = require('../server/db');
 
 // Users seed
 const seedUsers = [
@@ -68,17 +68,17 @@ const seedProducts = [
 // Oders seed
 const seedOrders = [
   {
-    date: '2022-11-09 12:55:26 America/New_York',
+    date: '2022-11-09 12:55:26',
     isCart: true,
     userId: 1
   },
   {
-    date: '2022-11-09 10:01:04 America/New_York',
+    date: '2022-11-09 10:01:04',
     isCart: true,
     userId: 2
   },
   {
-    date: '2022-11-09 15:33:31 America/New_York',
+    date: '2022-11-09 15:33:31',
     isCart: true,
     userId: 2
   }
@@ -138,10 +138,10 @@ const seed = async () => {
       return Product.create(prod);
     }))
     await Promise.all(seedOrders.map(order => {
-      return Product.create(order);
+      return Order.create(order);
     }))
     await Promise.all(seedOrderProduct.map(orderProd => {
-      return Product.create(orderProd);
+      return OrderProduct.create(orderProd);
     }))
   } catch (err) { console.error(err) }
 }
