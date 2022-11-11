@@ -1,37 +1,42 @@
 const { green, red } = require('chalk');
-const { db, User, Product } = require('./server/db');
+const { db, models: { User, Product,Order,OrderProduct} } = require('../server/db');
 
 const seedUsers = [
   {
-    role: 'Admin',
+    address: '123 main st',
+    userType: 'ADMIN',
     firstName: 'Adam',
     lastName: 'Min',
     email: 'ownersEmail@oregano.com',
     password: 'password'
   },
   {
-    role: 'User',
+    address: '1 oak rd',
+    userType: 'USER',
     firstName: 'Clark',
     lastName: 'Kent',
     email: 'shopper123@random.com',
     password: 'password',
   },
   {
-    role: 'User',
+    address: '23 Long rd',
+    userType: 'USER',
     firstName: 'John',
     lastName: 'Doe',
     email: 'johndoe@shopper.com',
     password: 'password',
   },
   {
-    role: 'User',
+    address: '45 franklin ave',
+    userType: 'USER',
     firstName: 'Jill',
     lastName: 'Jackson',
     email: 'jjackson@shopper.com',
     password: 'password',
   },
   {
-    role: 'User',
+    address: '7 john st',
+    userType: 'USER',
     firstName: 'Jan',
     lastName: 'Doe',
     email: 'janedoe@shopper.com',
@@ -40,68 +45,6 @@ const seedUsers = [
 
 ]
 
-const seedProducts = [
-  {
-    name: 'Bamboo Pants',
-    description: 'Pants made out of bamboo',
-    inventoryQty: 10,
-    price: 100,
-    imageURL: 'http://www.sunprecautions.com/content/images/products/23600-1_9576_900x1200_100.jpg'
-  },
-  {
-    name: 'Bamboo Longsleeve Shirt',
-    description: 'Long sleeve shirt made out of bamboo',
-    inventoryQty: 20,
-    price: 80,
-    imageURL: 'http://tshirtluver.com/image/cache/bamboo-t-shirt-tlts00011bambootshirt-800x885.jpg'
-  },
-  {
-    name: 'Silkworm Shirt',
-    description: 'Longsleeve shirt made from silk.',
-    inventoryQty: 35,
-    price: 120,
-    imageURL: 'https://dm1ll01jrnse4.cloudfront.net/optimize/opti_755486098_img1.jpg'
-  },
-  {
-    name: 'Kale t-shirt',
-
-  }
-]
-
-const seed = async () => {
-  try {
-    await db.sync({ force: true });
-    await Promise.all(seedUsers.map(data => {
-      return User.create(data);
-    }))
-    await Promise.all(seedProducts.map(prod => {
-      return Product.create(prod);
-    }))
-  } catch (err) { console.error(err) }
-}
-
-=======
-const { db, models: { User, Product,Order,OrderProduct} } = require('../server/db');
-
-
-const seedUsers = [
-  {
-    firstName: 'Adam',
-    lastName: 'Min',
-    email: 'ownersEmail@oregano.com',
-    password: 'password',
-    address: '123 main st',
-    userType: 'ADMIN',
-  },
-  {
-    firstName: 'Clark',
-    lastName: 'Kent',
-    email: 'shopper123@random.com',
-    password: 'password',
-    address: '1 oak rd',
-    userType: 'USER',
-  }
-]
 
 // Products seed
 const seedProducts = [
