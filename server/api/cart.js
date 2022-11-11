@@ -4,6 +4,17 @@ const {
 } = require("../db");
 module.exports = router;
 
+const requireToken = async (req, res, next) => {
+  try {
+    const token = req.headers.authorization;
+    const user = await User.findByToken(token);
+    req.user = user;
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
+
 // GET /api/cart
 router.get("/", async (req, res, next) => {
   try {
@@ -18,12 +29,12 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// GET /api/cart/:userId
-router.get("/:userId", async (req, res, next) => {
+// GET /api/cart/auth
+router.get("/auth", requireToken, async (req, res, next) => {
   try {
     const orders = await Order.findAll({
       where: {
-        userId: req.params.userId,
+        userId: req.user.id,
         isCart: true,
       },
     });

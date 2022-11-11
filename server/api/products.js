@@ -9,8 +9,13 @@ const requireToken = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     const user = await User.findByToken(token);
-    req.user = user;
-    next();
+    if (user.userType === "ADMIN") {
+      req.admin = user;
+      next();
+    } else {
+      req.user = user;
+      next();
+    }
   } catch (error) {
     next(error);
   }
@@ -26,18 +31,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// GET /PRODUCTS/single/:ID
-//needed to do because category is also a params
-router.get("/single/:productId", async (req, res, next) => {
-  try {
-    const product = await Product.findByPk(req.params.productId);
-    res.json(product);
-  } catch (err) {
-    next(err);
-  }
-});
-
-//GET /PRODUCTS/MEN
+//GET /products/men
 router.get("/men", async (req, res, next) => {
   try {
     const products = await Product.findAll({
@@ -51,7 +45,7 @@ router.get("/men", async (req, res, next) => {
   }
 });
 
-// GET /PRODUCTS/WOMEN
+// GET /products/women
 router.get("/women", async (req, res, next) => {
   try {
     const products = await Product.findAll({
@@ -65,37 +59,17 @@ router.get("/women", async (req, res, next) => {
   }
 });
 
-// POST /product/auth
-router.post("/auth", requireToken, async (req, res, next) => {
+// GET /products/single/:ID
+router.get("/single/:productId", async (req, res, next) => {
   try {
-    const prod = req.body;
-    const added = Product.create(prod);
-    res.json(added);
+    const product = await Product.findByPk(req.params.productId);
+    res.json(product);
   } catch (err) {
     next(err);
   }
 });
 
-router.put("/auth/:productId/", requireToken, async (req, res, next) => {
-  try {
-    const oldProd = await Product.findByPk(req.params.productId);
-    res.json(oldProd.update(req.body));
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.delete("/auth/:productId/", requireToken, async (req, res, next) => {
-  try {
-    const prod = await Product.findByPk(req.params.productId);
-    await prod.destroy();
-    res.send(prod);
-  } catch (err) {
-    next(err);
-  }
-});
-
-//POST /api/products/:productId
+//POST /api/products/:productId/auth
 router.post("/:productId/auth", requireToken, async (req, res, next) => {
   try {
     const [order] = await Order.findOrCreate({
@@ -121,6 +95,44 @@ router.post("/:productId/auth", requireToken, async (req, res, next) => {
     }
   } catch (err) {
     console.log("There was an error adding to cart", err);
+    next(err);
+  }
+});
+
+// POST /product/auth
+router.post("/auth", requireToken, async (req, res, next) => {
+  try {
+    if (req.admin.id) {
+      const prod = req.body;
+      const added = Product.create(prod);
+      res.json(added);
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+// PUT /api/products/auth/:productId
+router.put("/auth/:productId/", requireToken, async (req, res, next) => {
+  try {
+    if (req.admin.id) {
+      const oldProd = await Product.findByPk(req.params.productId);
+      res.json(oldProd.update(req.body));
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+// DELETE /api/products/auth/:productId
+router.delete("/auth/:productId/", requireToken, async (req, res, next) => {
+  try {
+    if (req.admin.id) {
+      const prod = await Product.findByPk(req.params.productId);
+      await prod.destroy();
+      res.send(prod);
+    }
+  } catch (err) {
     next(err);
   }
 });
