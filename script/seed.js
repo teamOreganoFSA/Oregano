@@ -4,7 +4,7 @@ const { db, models: { User, Product,Order,OrderProduct} } = require('../server/d
 const seedUsers = [
   {
     address: '123 main st',
-    userType: 'Admin',
+    userType: 'ADMIN',
     firstName: 'Adam',
     lastName: 'Min',
     email: 'ownersEmail@oregano.com',
@@ -12,7 +12,7 @@ const seedUsers = [
   },
   {
     address: '1 oak rd',
-    userType: 'User',
+    userType: 'USER',
     firstName: 'Clark',
     lastName: 'Kent',
     email: 'shopper123@random.com',
@@ -20,7 +20,7 @@ const seedUsers = [
   },
   {
     address: '23 Long rd',
-    userType: 'User',
+    userType: 'USER',
     firstName: 'John',
     lastName: 'Doe',
     email: 'johndoe@shopper.com',
@@ -28,7 +28,7 @@ const seedUsers = [
   },
   {
     address: '45 franklin ave',
-    userType: 'User',
+    userType: 'USER',
     firstName: 'Jill',
     lastName: 'Jackson',
     email: 'jjackson@shopper.com',
@@ -36,7 +36,7 @@ const seedUsers = [
   },
   {
     address: '7 john st',
-    userType: 'User',
+    userType: 'USER',
     firstName: 'Jan',
     lastName: 'Doe',
     email: 'janedoe@shopper.com',
