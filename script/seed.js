@@ -3,35 +3,40 @@ const { db, models: { User, Product,Order,OrderProduct} } = require('../server/d
 
 const seedUsers = [
   {
-    role: 'Admin',
+    address: '123 main st',
+    userType: 'Admin',
     firstName: 'Adam',
     lastName: 'Min',
     email: 'ownersEmail@oregano.com',
     password: 'password'
   },
   {
-    role: 'User',
+    address: '1 oak rd',
+    userType: 'User',
     firstName: 'Clark',
     lastName: 'Kent',
     email: 'shopper123@random.com',
     password: 'password',
   },
   {
-    role: 'User',
+    address: '23 Long rd',
+    userType: 'User',
     firstName: 'John',
     lastName: 'Doe',
     email: 'johndoe@shopper.com',
     password: 'password',
   },
   {
-    role: 'User',
+    address: '45 franklin ave',
+    userType: 'User',
     firstName: 'Jill',
     lastName: 'Jackson',
     email: 'jjackson@shopper.com',
     password: 'password',
   },
   {
-    role: 'User',
+    address: '7 john st',
+    userType: 'User',
     firstName: 'Jan',
     lastName: 'Doe',
     email: 'janedoe@shopper.com',
