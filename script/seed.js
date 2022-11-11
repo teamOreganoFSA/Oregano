@@ -8,7 +8,7 @@ const seedUsers = [
     firstName: 'Adam',
     lastName: 'Min',
     email: 'ownersEmail@oregano.com',
-    password: 'password'
+    password: 'pw1'
   },
   {
     address: '1 oak rd',
@@ -16,7 +16,7 @@ const seedUsers = [
     firstName: 'Clark',
     lastName: 'Kent',
     email: 'shopper123@random.com',
-    password: 'password',
+    password: 'pw2',
   },
   {
     address: '23 Long rd',
@@ -24,7 +24,7 @@ const seedUsers = [
     firstName: 'John',
     lastName: 'Doe',
     email: 'johndoe@shopper.com',
-    password: 'password',
+    password: 'pw3',
   },
   {
     address: '45 franklin ave',
@@ -32,7 +32,7 @@ const seedUsers = [
     firstName: 'Jill',
     lastName: 'Jackson',
     email: 'jjackson@shopper.com',
-    password: 'password',
+    password: 'pw4',
   },
   {
     address: '7 john st',
@@ -40,7 +40,7 @@ const seedUsers = [
     firstName: 'Jan',
     lastName: 'Doe',
     email: 'janedoe@shopper.com',
-    password: 'password',
+    password: 'pw5',
   },
 
 ]
