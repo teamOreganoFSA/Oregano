@@ -1,61 +1,54 @@
-const { green, red } = require("chalk");
-const {
-  db,
-  models: { User, Product, Order, OrderProduct },
-} = require("../server/db");
+const { green, red } = require('chalk');
+const { db, models: { User, Product,Order,OrderProduct} } = require('../server/db');
 
 const seedUsers = [
   {
-    id: 1,
-    address: "123 main st",
-    userType: "ADMIN",
-    firstName: "Adam",
-    lastName: "Min",
-    email: "ownersEmail@oregano.com",
-    password: "pw1",
+    address: '123 main st',
+    userType: 'ADMIN',
+    firstName: 'Adam',
+    lastName: 'Min',
+    email: 'ownersEmail@oregano.com',
+    password: 'pw1'
   },
   {
-    id: 2,
-    address: "1 oak rd",
-    userType: "USER",
-    firstName: "Clark",
-    lastName: "Kent",
-    email: "shopper123@random.com",
-    password: "pw2",
+    address: '1 oak rd',
+    userType: 'USER',
+    firstName: 'Clark',
+    lastName: 'Kent',
+    email: 'shopper123@random.com',
+    password: 'pw2',
   },
   {
-    id: 3,
-    address: "23 Long rd",
-    userType: "USER",
-    firstName: "John",
-    lastName: "Doe",
-    email: "johndoe@shopper.com",
-    password: "pw3",
+    address: '23 Long rd',
+    userType: 'USER',
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'johndoe@shopper.com',
+    password: 'pw3',
   },
   {
-    id: 4,
-    address: "45 franklin ave",
-    userType: "USER",
-    firstName: "Jill",
-    lastName: "Jackson",
-    email: "jjackson@shopper.com",
-    password: "pw4",
+    address: '45 franklin ave',
+    userType: 'USER',
+    firstName: 'Jill',
+    lastName: 'Jackson',
+    email: 'jjackson@shopper.com',
+    password: 'pw4',
   },
   {
-    id: 5,
-    address: "7 john st",
-    userType: "USER",
-    firstName: "Jan",
-    lastName: "Doe",
-    email: "janedoe@shopper.com",
-    password: "pw5",
+    address: '7 john st',
+    userType: 'USER',
+    firstName: 'Jan',
+    lastName: 'Doe',
+    email: 'janedoe@shopper.com',
+    password: 'pw5',
   },
-];
+
+]
+
 
 // Products seed
 const seedProducts = [
   {
-    id: 1,
     category: "MEN",
     name: "Bamboo Pants",
     description: "Pants made out of bamboo",
@@ -65,7 +58,6 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/6_9a82250e-1b30-4aa7-8983-c1eb9627d491.jpg?v=1667418844&width=1800",
   },
   {
-    id: 2,
     category: "WOMEN",
     name: "Bamboo Skirt",
     description: "Skirt made out of bamboo",
@@ -75,7 +67,6 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/11_c7d6c37f-c61d-42ad-9c06-583b7f2ddfbf.jpg?v=1667420871&width=1800",
   },
   {
-    id: 3,
     category: "WOMEN",
     name: "Bamboo Longsleeve Shirt",
     description: "Long sleeve shirt made out of bamboo",
@@ -85,7 +76,6 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/10_af628f73-9a91-4cae-b51b-f0d3e0429494.jpg?v=1663864434&width=1800",
   },
   {
-    id: 4,
     category: "MEN",
     name: "Silk T-shirt",
     description: "T-shirt made from silk.",
@@ -95,7 +85,6 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/RC1210M_HEATHEREDGREY_244_712eebd3-676b-4aba-8877-af5530485149.jpg?v=1655328410&width=1800",
   },
   {
-    id: 5,
     category: "WOMEN",
     name: "Kale Shirt",
     description: "Eco-friendly Shirt made from kale.",
