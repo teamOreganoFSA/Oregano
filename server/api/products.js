@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Sequelize } = require("sequelize");
 const {
   models: { Product, Order, User, OrderProduct },
+
 } = require("../db");
 module.exports = router;
 
@@ -19,6 +20,7 @@ const requireToken = async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll();
+    console.log('Printing products: ', products);
     res.json(products);
   } catch (err) {
     next(err);
@@ -64,8 +66,37 @@ router.get("/women", async (req, res, next) => {
   }
 });
 
-// POST /api/products/:productId/auth
-router.post("/:productId/auth", requireToken, async (req, res, next) => {
+// POST /product/auth
+router.post("/auth", requireToken, async (req, res, next) => {
+  try {
+    const prod = req.body;
+    const added = Product.create(prod);
+    res.json(added);
+  } catch (err) { next(err) }
+})
+
+
+router.put("/auth/:productId/", requireToken, async (req, res, next) => {
+
+  try {
+    const oldProd = await Product.findByPk(req.params.productId);
+    res.json(oldProd.update(req.body));
+  } catch (err) { next(err) }
+})
+
+
+router.delete("/auth/:productId/", requireToken, async (req, res, next) => {
+
+  try {
+    const prod = await Product.findByPk(req.params.productId);
+    await prod.destroy();
+    res.send(prod);
+  } catch (err) { next(err) }
+})
+
+
+//POST /api/products/:productId
+router.post("/:productId", async (req, res, next) => {
   try {
     const [order] = await Order.findOrCreate({
       where: {

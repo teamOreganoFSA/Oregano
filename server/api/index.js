@@ -3,6 +3,9 @@ module.exports = router;
 
 router.use("/users", require("./users"));
 router.use("/auth", require("../auth"));
+
+router.use("/orders", require("./orders"));
+
 router.use("/products", require("./products"));
 router.use("/cart", require("./cart"));
 router.use("/orders", require("./orders"));

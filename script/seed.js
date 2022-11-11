@@ -1,27 +1,50 @@
-const { green, red } = require("chalk");
-const {
-  db,
-  models: { User, Product, Order, OrderProduct },
-} = require("../server/db");
+const { green, red } = require('chalk');
+const { db, models: { User, Product,Order,OrderProduct} } = require('../server/db');
 
 const seedUsers = [
   {
-    firstName: "Adam",
-    lastName: "Min",
-    email: "ownersEmail@oregano.com",
-    password: "password",
-    address: "123 main st",
-    userType: "ADMIN",
+    address: '123 main st',
+    userType: 'ADMIN',
+    firstName: 'Adam',
+    lastName: 'Min',
+    email: 'ownersEmail@oregano.com',
+    password: 'password'
   },
   {
-    firstName: "Clark",
-    lastName: "Kent",
-    email: "shopper123@random.com",
-    password: "password",
-    address: "1 oak rd",
-    userType: "USER",
+    address: '1 oak rd',
+    userType: 'USER',
+    firstName: 'Clark',
+    lastName: 'Kent',
+    email: 'shopper123@random.com',
+    password: 'password',
   },
-];
+  {
+    address: '23 Long rd',
+    userType: 'USER',
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'johndoe@shopper.com',
+    password: 'password',
+  },
+  {
+    address: '45 franklin ave',
+    userType: 'USER',
+    firstName: 'Jill',
+    lastName: 'Jackson',
+    email: 'jjackson@shopper.com',
+    password: 'password',
+  },
+  {
+    address: '7 john st',
+    userType: 'USER',
+    firstName: 'Jan',
+    lastName: 'Doe',
+    email: 'janedoe@shopper.com',
+    password: 'password',
+  },
+
+]
+
 
 // Products seed
 const seedProducts = [
@@ -147,6 +170,7 @@ const seed = async () => {
     console.error(err);
   }
 };
+
 module.exports = seed;
 // If this module is being required from another module, then we just export the
 // function, to be used as necessary. But it will run right away if the module
