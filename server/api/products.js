@@ -1,6 +1,8 @@
 const router = require("express").Router();
+const { Sequelize } = require("sequelize");
 const {
-  models: { Product, Order, OrderProduct, User },
+  models: { Product, Order, User, OrderProduct },
+
 } = require("../db");
 module.exports = router;
 
@@ -8,13 +10,12 @@ const requireToken = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     const user = await User.findByToken(token);
-    if(user){
-      req.user = user;
-      next();
-    }
-
-  } catch (err) { next(err) }
-}
+    req.user = user;
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
 
 router.get("/", async (req, res, next) => {
   try {
@@ -97,13 +98,29 @@ router.delete("/auth/:productId/", requireToken, async (req, res, next) => {
 //POST /api/products/:productId
 router.post("/:productId", async (req, res, next) => {
   try {
-    const order = await Order.create();
+    const [order] = await Order.findOrCreate({
+      where: {
+        userId: req.user.id,
+      },
+    });
     const product = await Product.findByPk(req.params.productId);
     const result = await product.addOrder(order);
-    res.json(result);
+    if (!result) {
+      const forQuantity = await OrderProduct.update(
+        { quantity: Sequelize.literal("quantity + 1") },
+        {
+          where: {
+            orderId: order.id,
+            productId: product.id,
+          },
+        }
+      );
+      res.json(forQuantity);
+    } else {
+      res.json(result);
+    }
   } catch (err) {
     console.log("There was an error adding to cart", err);
     next(err);
   }
 });
-
