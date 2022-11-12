@@ -72,26 +72,51 @@ router.get("/single/:productId", async (req, res, next) => {
 //POST /api/products/:productId/auth
 router.post("/:productId/auth", requireToken, async (req, res, next) => {
   try {
-    const [order] = await Order.findOrCreate({
-      where: {
-        userId: req.user.id,
-      },
-    });
-    const product = await Product.findByPk(req.params.productId);
-    const result = await product.addOrder(order);
-    if (!result) {
-      const forQuantity = await OrderProduct.update(
-        { quantity: Sequelize.literal("quantity + 1") },
-        {
-          where: {
-            orderId: order.id,
-            productId: product.id,
-          },
-        }
-      );
-      res.json(forQuantity);
-    } else {
-      res.json(result);
+    if (req.user) {
+      const [order] = await Order.findOrCreate({
+        where: {
+          userId: req.user.id,
+        },
+      });
+      const product = await Product.findByPk(req.params.productId);
+      const result = await product.addOrder(order);
+      if (!result) {
+        const forQuantity = await OrderProduct.update(
+          { quantity: Sequelize.literal("quantity + 1") },
+          {
+            where: {
+              orderId: order.id,
+              productId: product.id,
+            },
+          }
+        );
+        res.json(forQuantity);
+      } else {
+        res.json(result);
+      }
+    }
+    if (req.admin) {
+      const [order] = await Order.findOrCreate({
+        where: {
+          userId: req.admin.id,
+        },
+      });
+      const product = await Product.findByPk(req.params.productId);
+      const result = await product.addOrder(order);
+      if (!result) {
+        const forQuantity = await OrderProduct.update(
+          { quantity: Sequelize.literal("quantity + 1") },
+          {
+            where: {
+              orderId: order.id,
+              productId: product.id,
+            },
+          }
+        );
+        res.json(forQuantity);
+      } else {
+        res.json(result);
+      }
     }
   } catch (err) {
     console.log("There was an error adding to cart", err);

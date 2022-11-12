@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const {
-  models: { Order, User, OrderProduct },
+  models: { Order, User, OrderProduct, Product },
 } = require("../db");
 module.exports = router;
 
@@ -44,13 +44,11 @@ router.get("/auth", requireToken, async (req, res, next) => {
         isCart: true,
       },
     });
-    const itemsInCart = await OrderProduct.findAll({
-      where: {
-        orderId: cart.id,
-      },
-    });
-    res.json(itemsInCart);
+    res.json(await cart.getProducts());
   } catch (err) {
     next(err);
   }
 });
+
+// PUT /api/cart/auth
+router.put("/auth", requireToken, async (req, res, next) => {});
