@@ -109,11 +109,13 @@ const seedProducts = [
 // Oders seed
 const seedOrders = [
   {
+    id: 1,
     date: "2022-11-09 12:55:26",
     isCart: true,
     userId: 1,
   },
   {
+    id: 2,
     date: "2022-11-09 10:01:04",
     isCart: true,
     userId: 2,
