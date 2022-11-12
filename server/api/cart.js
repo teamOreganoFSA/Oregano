@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const {
-  models: { Order, User },
+  models: { Order, User, OrderProduct, Product },
 } = require("../db");
 module.exports = router;
 
@@ -16,14 +16,20 @@ const requireToken = async (req, res, next) => {
 };
 
 // GET /api/cart
+// THIS IS A ROUTE FOR THE GUEST CART WHICH INVOLVES THE LOCALSTORAGE. IDK IF THIS CAN APPLY TO IT BUT ITS HERE JUST IN CASE - ERIK
 router.get("/", async (req, res, next) => {
   try {
-    const orders = await Order.findAll({
+    const [cart] = await Order.findAll({
       where: {
         isCart: true,
       },
     });
-    res.json(orders);
+    const itemsInCart = await OrderProduct.findAll({
+      where: {
+        orderId: cart.id,
+      },
+    });
+    res.json(itemsInCart);
   } catch (err) {
     next(err);
   }
@@ -32,14 +38,17 @@ router.get("/", async (req, res, next) => {
 // GET /api/cart/auth
 router.get("/auth", requireToken, async (req, res, next) => {
   try {
-    const orders = await Order.findAll({
+    const [cart] = await Order.findAll({
       where: {
         userId: req.user.id,
         isCart: true,
       },
     });
-    res.json(orders);
+    res.json(await cart.getProducts());
   } catch (err) {
     next(err);
   }
 });
+
+// PUT /api/cart/auth
+router.put("/auth", requireToken, async (req, res, next) => {});
