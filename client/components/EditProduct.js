@@ -35,7 +35,7 @@ const EditProduct = (props) => {
       const token = window.localStorage.getItem("token");
       const config = { headers: { authorization: token } };
       await axios.put(
-        `/api/products/auth/${props.match.params.id}`,
+        `/api/admin/${props.match.params.id}`,
         formValues,
         config
       );
