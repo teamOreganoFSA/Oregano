@@ -6,6 +6,7 @@ import { logout } from "../store";
 
 const Navbar = () => {
   const auth = useSelector((state) => state.auth);
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const logoutHandler = () => {
     dispatch(logout());
@@ -27,7 +28,7 @@ const Navbar = () => {
         <li>
           <Link to="/cart">
             Cart{"  "}
-            <FaShoppingCart />{" "}
+            <FaShoppingCart /> {cart.length}
           </Link>
         </li>
         <li>

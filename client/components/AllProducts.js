@@ -11,19 +11,19 @@ export class AllProducts extends React.Component {
 
   render() {
     const products = this.props.products;
-    console.log(products)
+    console.log(products);
     return (
       <div className="wrapper">
         <div>
           {products.map((product) => (
-            <div>
+            <div key={product.id}>
               <Card
-                key={product.id}
+                product={product}
                 imageURL={product.imageURL}
                 name={product.name}
                 price={product.price}
                 description={product.description}
-                id = {product.id}
+                id={product.id}
               />
             </div>
           ))}
