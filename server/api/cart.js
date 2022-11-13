@@ -51,4 +51,32 @@ router.get("/auth", requireToken, async (req, res, next) => {
 });
 
 // PUT /api/cart/auth
-router.put("/auth", requireToken, async (req, res, next) => {});
+router.put("/auth", requireToken, async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        userId: req.user.id,
+      },
+    });
+    const product = await Product.findByPk(req.body.productId);
+    const changeQuantity = await OrderProduct.update(
+      {
+        quantity: req.body.quantity,
+      },
+      {
+        where: { orderId: order.id, productId: product.id },
+      }
+    );
+    res.json(changeQuantity);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// DELETE /api/cart/auth
+router.delete("/auth", requireToken, async (req, res, next) => {
+  try {
+  } catch (err) {
+    next(err);
+  }
+});
