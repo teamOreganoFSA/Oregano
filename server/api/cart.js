@@ -76,6 +76,9 @@ router.put("/auth", requireToken, async (req, res, next) => {
 // DELETE /api/cart/auth
 router.delete("/auth", requireToken, async (req, res, next) => {
   try {
+    const product = await Product.findByPk(req.body.productId);
+    await product.destroy();
+    res.json(product);
   } catch (err) {
     next(err);
   }
