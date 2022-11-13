@@ -9,7 +9,7 @@ const requireToken = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     const user = await User.findByToken(token);
-    if (user.userType === "ADMIN") {
+      if (user.userType === "ADMIN") {
       req.admin = user;
       next();
     } else {
