@@ -10,6 +10,7 @@ import AdminDash from "./components/AdminDash";
 import NewProductForm from "./components/NewProductForm";
 import SingleProduct from "./components/SingleProduct";
 import EditProduct from "./components/EditProduct";
+import EditUser from "./components/EditUser";
 
 /**
  * COMPONENT
@@ -35,6 +36,7 @@ class Routes extends Component {
           <Route path="/admin" component={AdminDash} />
           <Route path="/new-product" component={NewProductForm} />
           <Route path="/edit-product/:id" component={EditProduct} />
+          <Route path="/edituser" component={EditUser} />
         </Switch>
       </div>
     );

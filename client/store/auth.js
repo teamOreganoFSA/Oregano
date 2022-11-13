@@ -20,7 +20,7 @@ export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
     const res = await axios.get("/auth/me", {
-      headers: {
+      headers : {
         authorization: token,
       },
     });
