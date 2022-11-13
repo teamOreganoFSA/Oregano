@@ -12,7 +12,7 @@ const EditProduct = (props) => {
     description: "",
     inventoryQuantity: "",
     price: "",
-    category: "MEN",
+    category: "",
     imageURL: "",
   });
 
@@ -32,10 +32,13 @@ const EditProduct = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // await axios.put(
-      //   `/api/products/auth/${props.match.params.id}`,
-      //   formValues
-      // );
+      const token = window.localStorage.getItem("token");
+      const config = { headers: { authorization: token } };
+      await axios.put(
+        `/api/products/auth/${props.match.params.id}`,
+        formValues,
+        config
+      );
       history.push("/admin");
     } catch (error) {
       console.log(error);
@@ -67,7 +70,7 @@ const EditProduct = (props) => {
             value={formValues.price}
           />
           <label htmlFor="category">Category</label>
-          <select onChange={handleChange} name="category">
+          <select onChange={handleChange} name="category" value= {formValues.category}>
             <option value="MEN">MEN</option>
             <option value="WOMEN">WOMEN</option>
           </select>
@@ -91,3 +94,4 @@ const EditProduct = (props) => {
 };
 
 export default EditProduct;
+
