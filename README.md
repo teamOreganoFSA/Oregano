@@ -30,16 +30,16 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 ### As a customer/visitor, I want to be able to:
 
 - access a deployed version of the website so I can browse and purchase products.
-- view all available products so I can pick from a variety.
-- view a single product so I can see more details.
-- add a product to my cart so I can collect my desired products in one place.
-- edit my cart if I change my mind:
-  - change the quantity of a product in my cart.
-  - remove a product in my cart.
-  - _No one else should be able to edit my cart except me._
-- "checkout" the items in my cart so I can purchase my desired goods.
-  - _Think of a typical user experience on popular websites from a guest user and logged-in user perspective._
-  - _You can just start with by simulating the experience of checking out with a simple confirmation page._
+- X view all available products so I can pick from a variety.
+- X view a single product so I can see more details.
+- x (local storage needs work) add a product to my cart so I can collect my desired products in one place.
+- x (local storage needs work) edit my cart if I change my mind:
+  - x (local storage needs work) change the quantity of a product in my cart.
+  - x (local storage needs work) remove a product in my cart.
+  - X _No one else should be able to edit my cart except me._
+- (frontend page) "checkout" the items in my cart so I can purchase my desired goods.
+  - (local storage needs work) _Think of a typical user experience on popular websites from a guest user and logged-in user perspective._
+  - (have users info autfilled, guest still needs to fill out their info) _You can just start with by simulating the experience of checking out with a simple confirmation page._
 - create an account so I can have a logged-in experience.
 
 ### As a logged-in customer, I want to be able to:
@@ -52,18 +52,18 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 
 - have validated data to ensure reliability.
   - _i.e. each customer that creates an account should only be able to do so once with a single email address._
-- have full rights to make backend requests to add, edit, and remove products.
-  - _No one else should have access._
+- (need to work on add and remove product) have full rights to make backend requests to add, edit, and remove products.
+  - X _No one else should have access._
 - view user information.
   - _No one else should have access._
 
 ### As an engineer, I want to:
 
-- have a well-seeded database so that I am able to simulate a number of different scenarios for the user stories below.
-  - _By doing this, you really set yourselves up to tackle many of the points throughout the tiers. In the long run, this will save you, potentially, tons of time._
-  - _For example, seed hundreds of products with dummy data so that when you get to the “pagination” user story, you won’t have to worry about adding more products._
-  - _Likewise, add a bunch of users with products in their carts so editing the cart can be worked on without already having the “add to cart” functionality built out._
-- user data to be secure so that no one can unrightfully manipulate information.
+- X have a well-seeded database so that I am able to simulate a number of different scenarios for the user stories below.
+  - X _By doing this, you really set yourselves up to tackle many of the points throughout the tiers. In the long run, this will save you, potentially, tons of time._
+  - X _For example, seed hundreds of products with dummy data so that when you get to the “pagination” user story, you won’t have to worry about adding more products._
+  - X _Likewise, add a bunch of users with products in their carts so editing the cart can be worked on without already having the “add to cart” functionality built out._
+- X user data to be secure so that no one can unrightfully manipulate information.
 
 ## TIER 2: E-Commerce Essentials
 
@@ -71,10 +71,10 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 
 ### As a customer, I want to be able to:
 
-- see all products that belong to a certain category.
-  - _Keep this simple. For example, a product can only belong to one category._
+- X see all products that belong to a certain category.
+  - X _Keep this simple. For example, a product can only belong to one category._
 - explore an aesthetically pleasing website so I can easily navigate around and enjoy the experience (UI/UX).
-  - _This includes front-end data validations. For example, if certain fields of a form are required and must be in a specific format, this is obvious to the user._
+  - X _This includes front-end data validations. For example, if certain fields of a form are required and must be in a specific format, this is obvious to the user._
 - have a persistent cart so I can revisit and pick up where I left off.
   - _There are two more experiences to consider here. Explore your favorite websites to see what the intended behavior is for the following cases:_
     - **Guest-only:** I don't want to create an account, but I want my cart to persist between browser refreshes.

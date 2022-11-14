@@ -21,14 +21,13 @@ export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
     const res = await axios.get("/auth/me", {
-      headers : {
+      headers: {
         authorization: token,
       },
     });
     return dispatch(setAuth(res.data));
   }
 };
-
 
 export const authenticate =
   (method, email, password, firstName, lastName, address) =>
@@ -42,13 +41,12 @@ export const authenticate =
       );
       window.localStorage.setItem(TOKEN, res.data.token);
       dispatch(me());
-      dispatch(fetchCart())
+      dispatch(fetchCart());
       history.push("/");
     } catch (authError) {
       return dispatch(setAuth({ error: authError }));
     }
   };
-
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
