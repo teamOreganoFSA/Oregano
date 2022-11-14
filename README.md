@@ -29,9 +29,9 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 
 ### As a customer/visitor, I want to be able to:
 
-- access a deployed version of the website so I can browse and purchase products.
-- view all available products so I can pick from a variety.
-- view a single product so I can see more details.
+x access a deployed version of the website so I can browse and purchase products.
+x view all available products so I can pick from a variety.
+x view a single product so I can see more details.
 - add a product to my cart so I can collect my desired products in one place.
 - edit my cart if I change my mind:
   - change the quantity of a product in my cart.
@@ -40,7 +40,7 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 - "checkout" the items in my cart so I can purchase my desired goods.
   - _Think of a typical user experience on popular websites from a guest user and logged-in user perspective._
   - _You can just start with by simulating the experience of checking out with a simple confirmation page._
-- create an account so I can have a logged-in experience.
+x create an account so I can have a logged-in experience.
 
 ### As a logged-in customer, I want to be able to:
 
@@ -53,9 +53,9 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 - have validated data to ensure reliability.
   - _i.e. each customer that creates an account should only be able to do so once with a single email address._
 - have full rights to make backend requests to add, edit, and remove products.
-  - _No one else should have access._
-- view user information.
-  - _No one else should have access._
+  _No one else should have access._
+  x view user information.
+ _No one else should have access._
 
 ### As an engineer, I want to:
 
