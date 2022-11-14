@@ -15,17 +15,12 @@ const requireToken = async (req, res, next) => {
   }
 };
 
-// GET /api/orders/auth
-router.get("/auth", requireToken, async (req, res, next) => {
-  try {
-    const [order] = await Order.findAll({
-      where: {
-        userId: req.user.id,
-        isCart: false,
-      },
-    });
-    res.json(await order.getProducts());
-  } catch (err) {
-    next(err);
-  }
-});
+// POST /api/checkout/
+router.post("/"),
+  requireToken,
+  async (req, res, next) => {
+    try {
+    } catch (err) {
+      next(err);
+    }
+  };
