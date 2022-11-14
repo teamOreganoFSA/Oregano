@@ -22,7 +22,7 @@ const loginForm = () => (
     </div>
   </div>
 );
-export const signupForm = () => (
+const signupForm = () => (
   <div className="signupForm">
     <div>
       <label htmlFor="firstName">

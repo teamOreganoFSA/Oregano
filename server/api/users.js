@@ -1,6 +1,8 @@
-const router = require('express').Router()
-const { models: { User }} = require('../db')
-module.exports = router
+const router = require("express").Router();
+const {
+  models: { User },
+} = require("../db");
+module.exports = router;
 
 const requireToken = async (req, res, next) => {
   try {
@@ -14,37 +16,40 @@ const requireToken = async (req, res, next) => {
 };
 
 //GET /api/users/id
-router.get('/:userId', requireToken, async (req, res, next) => {
+router.get("/:userId", requireToken, async (req, res, next) => {
   try {
-    const user = await User.findOne({where:
-    {id : req.user.id}})
-    res.json(user)
+    const user = await User.findOne({ where: { id: req.user.id } });
+    res.json(user);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
-
+});
 
 // Edit user // PUT /api/users/:userId
-router.put('/:userId', requireToken, async (req, res, next) => {
+router.put("/:userId", requireToken, async (req, res, next) => {
   try {
     const userId = req.user.id;
     const user = await User.findByPk(userId);
-      await user.update(req.body);
-      res.send(user);
-  } catch (err) { next(err) }
-})
-
+    await user.update(req.body);
+    res.send(user);
+  } catch (err) {
+    next(err);
+  }
+});
 
 // Delete user account
-router.delete('/:userId', requireToken, async (req, res, next) => {
+router.delete("/:userId", requireToken, async (req, res, next) => {
   try {
     const userId = req.params.userId;
-    await User.destroy({ where: {
-      id: userId
-    }})
-  } catch (err) { next(err) }
-})
+    await User.destroy({
+      where: {
+        id: userId,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 
 // Add User // POST /api/users/
 // Use for admin adding users (may not need)
