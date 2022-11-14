@@ -4,16 +4,17 @@ const {
 } = require("../db");
 module.exports = router;
 
-const requireToken = async (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     const user = await User.findByToken(token);
     if (user.userType === "ADMIN") {
-      req.admin = user;
+      next();
+    } else if (user.correctPassword(user.password)) {
       next();
     }
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 };
 
@@ -21,7 +22,7 @@ const requireToken = async (req, res, next) => {
 // Use for admin adding users (may not need)
 // Expects req.body = {user fields}
 // Good place to add admin users
-router.post("/", requireToken, async (req, res, next) => {
+router.post("/", authMiddleware, async (req, res, next) => {
   try {
     const user = await User.create(req.body);
     res.send({ token: await user.generateToken() });
@@ -35,7 +36,7 @@ router.post("/", requireToken, async (req, res, next) => {
 });
 
 // Edit user // PUT /api/users/:userId
-router.put("/:userId", requireToken, async (req, res, next) => {
+router.put("/:userId", authMiddleware, async (req, res, next) => {
   try {
     const userId = req.params.userId;
     const user = await User.findByPk(userId);
@@ -49,7 +50,7 @@ router.put("/:userId", requireToken, async (req, res, next) => {
 });
 
 // Delete user account
-router.delete("/:userId", requireToken, async (req, res, next) => {
+router.delete("/:userId", authMiddleware, async (req, res, next) => {
   try {
     const userId = req.params.userId;
     await User.destroy({
@@ -57,6 +58,7 @@ router.delete("/:userId", requireToken, async (req, res, next) => {
         id: userId,
       },
     });
+    res.send({});
   } catch (err) {
     next(err);
   }
