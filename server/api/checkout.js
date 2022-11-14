@@ -15,12 +15,25 @@ const requireToken = async (req, res, next) => {
   }
 };
 
-// POST /api/checkout/
-router.post("/"),
-  requireToken,
-  async (req, res, next) => {
-    try {
-    } catch (err) {
-      next(err);
-    }
-  };
+// PUT /api/checkout
+router.put("/", requireToken, async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        isCart: true,
+      },
+    });
+    const checkout = await Order.update(
+      { isCart: false },
+      {
+        where: {
+          id: order.id,
+        },
+      }
+    );
+    res.json(checkout);
+  } catch (err) {
+    next(err);
+  }
+});

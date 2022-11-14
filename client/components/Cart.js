@@ -6,6 +6,7 @@ const Cart = () => {
   const { cart } = useSelector((state) => state);
 
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(fetchCart());
   }, []);
