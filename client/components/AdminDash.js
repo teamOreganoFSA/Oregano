@@ -2,10 +2,12 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchAllProducts } from "../store/allProducts";
-import Card from "./Card";
+
+
 
 const AdminDash = () => {
   const { allProducts } = useSelector((state) => state);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

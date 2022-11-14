@@ -19,7 +19,6 @@ const requireToken = async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll();
-    console.log("Printing products: ", products);
     res.json(products);
   } catch (err) {
     next(err);

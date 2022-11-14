@@ -10,6 +10,7 @@ const Cart = () => {
     dispatch(fetchCart());
   }, []);
 
+  console.log(cart)
   return (
     <div>
       {cart.map((item) => {
