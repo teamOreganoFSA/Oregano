@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart, FaHome, FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../store";
+import { logout} from "../store/auth";
+import { clearCart } from "../store/cart";
+
 
 const Navbar = () => {
   const auth = useSelector((state) => state.auth);
@@ -10,6 +12,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const logoutHandler = () => {
     dispatch(logout());
+    dispatch(clearCart());
   };
 
   return (
@@ -38,6 +41,7 @@ const Navbar = () => {
               {auth.userType === "ADMIN" && (
                 <Link to="/admin">Admin Dashboard</Link>
               )}
+              {auth.userType==="USER" && (<Link to= {`/user/${auth.id}`}>User Dashboard</Link>)}
               <button
                 onClick={() => {
                   logoutHandler();

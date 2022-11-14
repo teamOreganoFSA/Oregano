@@ -42,7 +42,6 @@ export const addNewProduct = (product) => {
     try {
       const { data } = await axios.post("/api/products", product);
       dispatch(_addNewProduct(data));
-      console.log("data==>", data);
     } catch (error) {
       console.log("Unable to add product");
       console.error(error);

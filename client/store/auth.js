@@ -1,5 +1,6 @@
 import axios from "axios";
 import history from "../history";
+import { fetchCart } from "./cart";
 
 const TOKEN = "token";
 
@@ -41,6 +42,7 @@ export const authenticate =
       );
       window.localStorage.setItem(TOKEN, res.data.token);
       dispatch(me());
+      dispatch(fetchCart())
       history.push("/");
     } catch (authError) {
       return dispatch(setAuth({ error: authError }));

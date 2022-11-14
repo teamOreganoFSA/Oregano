@@ -4,53 +4,41 @@ const {
 } = require("../db");
 module.exports = router;
 
-const authMiddleware = async (req, res, next) => {
+const requireToken = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     const user = await User.findByToken(token);
-    if (user.userType === "ADMIN") {
-      next();
-    } else if (user.correctPassword(user.password)) {
-      next();
-    }
-  } catch (err) {
-    next(err);
+    req.user = user;
+    next();
+  } catch (error) {
+    next(error);
   }
 };
 
-// Add User // POST /api/users/
-// Use for admin adding users (may not need)
-// Expects req.body = {user fields}
-// Good place to add admin users
-router.post("/", authMiddleware, async (req, res, next) => {
+//GET /api/users/id
+router.get("/:userId", requireToken, async (req, res, next) => {
   try {
-    const user = await User.create(req.body);
-    res.send({ token: await user.generateToken() });
+    const user = await User.findOne({ where: { id: req.user.id } });
+    res.json(user);
   } catch (err) {
-    if (err.name === "SequelizeUniqueConstraintError") {
-      res.status(401).send("User already exists");
-    } else {
-      next(err);
-    }
+    next(err);
   }
 });
 
 // Edit user // PUT /api/users/:userId
-router.put("/:userId", authMiddleware, async (req, res, next) => {
+router.put("/:userId", requireToken, async (req, res, next) => {
   try {
-    const userId = req.params.userId;
+    const userId = req.user.id;
     const user = await User.findByPk(userId);
-    if (user) {
-      await user.update(req.body);
-      res.send(user);
-    }
+    await user.update(req.body);
+    res.send(user);
   } catch (err) {
     next(err);
   }
 });
 
 // Delete user account
-router.delete("/:userId", authMiddleware, async (req, res, next) => {
+router.delete("/:userId", requireToken, async (req, res, next) => {
   try {
     const userId = req.params.userId;
     await User.destroy({
@@ -58,8 +46,24 @@ router.delete("/:userId", authMiddleware, async (req, res, next) => {
         id: userId,
       },
     });
-    res.send({});
   } catch (err) {
     next(err);
   }
 });
+
+// Add User // POST /api/users/
+// Use for admin adding users (may not need)
+// Expects req.body = {user fields}
+// Good place to add admin users
+// router.post('/:userId', requireToken, async (req, res, next) => {
+//   try {
+//     const user = await User.create(req.body);
+//     res.send({token: await user.generateToken()})
+//   } catch (err) {
+//       if (err.name === 'SequelizeUniqueConstraintError') {
+//         res.status(401).send('User already exists')
+//       } else {
+//         next(err)
+//       }
+//    }
+// })
