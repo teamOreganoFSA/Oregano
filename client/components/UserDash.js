@@ -6,20 +6,19 @@ import { fetchUser } from "../store/user";
 
 
 const UserDash = () => {
-  const { auth } = useSelector((state) => state);
+  const { user } = useSelector((state) => state);
   const dispatch = useDispatch();
-  console.log(auth)
   useEffect(() => {
     dispatch(fetchUser());
-  }, []);
+  },[]);
 
 
   return (
     <div className="dash-container">
       <div className="products-container">
-          <div key={auth.id} className="single-product">
-            <p>{auth.firstName} {auth.lastName}</p>
-            <Link to={`/edit-user/${auth.id}`}>
+          <div key={user.id} className="single-product">
+            <p>{user.firstName} {user.lastName}</p>
+            <Link to={`/edit-user/${user.id}`}>
               <button>Edit User</button>
             </Link>
           </div>

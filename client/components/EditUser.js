@@ -36,10 +36,8 @@ const EditUser = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-    
       const token = window.localStorage.getItem("token");
       const config = { headers: { authorization: token } };
-      console.log('user>>>>>>>>>>>', token)
       await axios.put(
         `/api/users/${user.id}`,
         formValues,
