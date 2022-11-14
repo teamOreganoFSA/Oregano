@@ -11,6 +11,7 @@ import NewProductForm from "./components/NewProductForm";
 import SingleProduct from "./components/SingleProduct";
 import EditProduct from "./components/EditProduct";
 import EditUser from "./components/EditUser";
+import UserDash from "./components/UserDash";
 
 /**
  * COMPONENT
@@ -34,9 +35,10 @@ class Routes extends Component {
           <Route exact path="/products" component={AllProduct} />
           <Route path="/products/:category" component={AllProduct} />
           <Route path="/admin" component={AdminDash} />
+          <Route path ="/user" component={UserDash}/>
           <Route path="/new-product" component={NewProductForm} />
           <Route path="/edit-product/:id" component={EditProduct} />
-          <Route path="/edituser" component={EditUser} />
+          <Route path="/edit-user/:id" component={EditUser} />
         </Switch>
       </div>
     );

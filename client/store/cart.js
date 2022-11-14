@@ -4,6 +4,7 @@ import axios from "axios";
  */
 const FETCH_CART = "FETCH_CART";
 const ADD_TO_CART = "ADD_TO_CART";
+const CLEAR_CART ="CLEAR_CART"
 
 /**
  * ACTION CREATORS
@@ -17,6 +18,10 @@ const _addToCart = (product) => ({
   type: ADD_TO_CART,
   product,
 });
+
+export const clearCart = () => ({
+type: CLEAR_CART
+})
 
 /**
  * THUNK CREATORS
@@ -61,6 +66,8 @@ export default function (state = [], action) {
       return action.cart;
     case ADD_TO_CART:
       return [...state, action.product];
+    case CLEAR_CART:
+      return []
     default:
       return state;
   }

@@ -6,8 +6,9 @@ import auth from "./auth";
 import allProducts from "./allProducts";
 import singleProduct from "./singleProduct";
 import cart from "./cart";
+import user from './user'
 
-const reducer = combineReducers({ auth, allProducts, singleProduct, cart });
+const reducer = combineReducers({ auth, allProducts, singleProduct, cart,user });
 
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
