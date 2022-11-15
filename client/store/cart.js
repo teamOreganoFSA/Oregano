@@ -7,6 +7,7 @@ import { conformCart } from "../components/helpfunctions/conformCart";
 const FETCH_CART = "FETCH_CART";
 const ADD_TO_CART = "ADD_TO_CART";
 const CLEAR_CART = "CLEAR_CART";
+const DELETE_ITEM = "DELETE_ITEM";
 
 /**
  * ACTION CREATORS
@@ -24,6 +25,11 @@ const _addToCart = (product) => ({
 export const _clearCart = () => ({
   type: CLEAR_CART,
 });
+
+// const _deleteItem = (product) => ({
+//   type: DELETE_ITEM,
+//   product,
+// });
 
 /**
  * THUNK CREATORS
@@ -126,6 +132,23 @@ export const addToCart = (product) => {
   };
 };
 
+// export const deleteItem = (id) => {
+//   return async (dispatch) => {
+//     const token = window.localStorage.getItem("token");
+//     if (token) {
+//       const config = {
+//         headers: {
+//           authorization: token,
+//         },
+//       };
+//       await axios.delete("/api/cart/auth", config);
+//       dispatch(_deleteItem(id));
+//     }
+//     window.localStorage.removeItem("cart");
+//     dispatch(_deleteItem(id));
+//   };
+// };
+
 export const clearCart = () => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
@@ -158,6 +181,8 @@ export default function (state = [], action) {
       return [...state, action.product];
     case CLEAR_CART:
       return [];
+    // case DELETE_ITEM:
+    //   return state;
     default:
       return state;
   }

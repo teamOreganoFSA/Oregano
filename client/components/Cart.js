@@ -2,9 +2,9 @@ import React, { useEffect, state, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { cartQuantity, fetchCart, clearCart } from "../store/cart";
+import { cartQuantity, fetchCart, clearCart, deleteItem } from "../store/cart";
 import { conformCart } from "./helpfunctions/conformCart";
-
+import { FaTrash } from "react-icons/fa";
 import "../components/Styles/cart.css";
 
 const Cart = (props) => {
@@ -27,6 +27,12 @@ const Cart = (props) => {
     setQty({ ...qty, [id]: event.target.value });
     dispatch(cartQuantity(id, event.target.value));
     return event.target.value;
+  };
+
+  const deleteHandler = (e, id) => {
+    console.log("Printing id: ", id);
+    console.log("Printing e", e.target);
+    dispatch(deleteItem(id));
   };
 
   {
@@ -55,6 +61,11 @@ const Cart = (props) => {
                 type="number"
                 min={1}
                 value={qty[item.id] || item.orderProducts?.quantity}
+              />
+              <FaTrash
+                onClick={(e, id = item.id) => {
+                  deleteHandler(e, id);
+                }}
               />
             </div>
           ) : (
