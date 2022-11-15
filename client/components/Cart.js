@@ -1,17 +1,16 @@
 import React, { useEffect, state, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { Link } from "react-router-dom";
 import { cartQuantity, fetchCart } from "../store/cart";
 import { conformCart } from "./helpfunctions/conformCart";
 
-import "../components/Styles/cart.css"
+import "../components/Styles/cart.css";
 
-
-const Cart = () => {
+const Cart = (props) => {
   const [qty, setQty] = useState({});
   const { cart } = useSelector((state) => state);
 
-  console.log(cart)
+  console.log(cart);
 
   const dispatch = useDispatch();
 
@@ -46,6 +45,7 @@ const Cart = () => {
                 ${item.price} x {item.orderProducts?.quantity}
               </p>
               <input
+                disabled={props.isCheckout}
                 onChange={(e, id = item.id) => {
                   handleChange(e, id);
                 }}
@@ -59,13 +59,19 @@ const Cart = () => {
             <h1 key={index}>loading</h1>
           );
         })}
-        <button>Checkout</button>
+        <div>
+          <button>Clear Cart</button>
+        </div>
+        {!props.isCheckout && (
+          <Link to="/checkout">
+            <button>Checkout</button>
+          </Link>
+        )}
       </div>
     ) : (
       <h1>loading</h1>
     );
   }
-
 };
 
 export default Cart;

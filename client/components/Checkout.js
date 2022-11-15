@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import Cart from "./Cart";
 import { me } from "../store/auth";
 import { fetchCart } from "../store/cart";
@@ -20,6 +21,9 @@ const Checkout = () => {
     <div>
       <h3>Checkout</h3>
       <div className="shipping">
+        <h4>
+          {auth.firstName} {auth.lastName}
+        </h4>
         <h5>Shipping address</h5>
         <p>{auth.address}</p>
       </div>
@@ -29,10 +33,19 @@ const Checkout = () => {
       </div>
       <div className="order">
         <h5>Review items and shipping</h5>
-        <Cart />
+        <Cart isCheckout={true} />
+        <Link to="/cart">
+          <button>Edit cart</button>
+        </Link>
       </div>
       {/* hook up to place order */}
-      <button>Place your order</button>
+      <button
+        onClick={() => {
+          window.alert(`Thank you for your order!${auth.firstName}`);
+        }}
+      >
+        Place your order
+      </button>
     </div>
   );
 };
