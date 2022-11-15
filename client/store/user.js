@@ -18,12 +18,12 @@ const _fetchUser = (user) => ({
  */
 //all products WITH FILTER MEN OR WOMEN CONDITIONAL
 
-export const fetchUser = () => {
+export const fetchUser = (userId) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
     if (token) {
       try {
-        const { data } = await axios.get("/api/users/userId", {
+        const { data } = await axios.get(`/api/users/${userId}`, {
           headers: { authorization: token },
         });
         dispatch(_fetchUser(data));
