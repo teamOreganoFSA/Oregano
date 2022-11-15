@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { deleteProduct } from "../store/allProducts";
 
 const EditProduct = (props) => {
   const dispatch = useDispatch();
@@ -17,8 +18,10 @@ const EditProduct = (props) => {
   });
 
   useEffect(() => {
-    loadProduct(props.match.params.id);
+    loadProduct(props.match.params.id)
   }, []);
+
+  
 
   const loadProduct = async (id) => {
     const { data } = await axios.get(`/api/products/single/${id}`);
@@ -44,10 +47,15 @@ const EditProduct = (props) => {
       console.log(error);
     }
   };
+
+  const removeHandler =() => {
+    dispatch(deleteProduct(props.match.params.id))
+  }
+ 
   return (
     <div style={{ display: "flex" }}>
       <h2>Edit Product Form</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <div>
           <label htmlFor="name">Name</label>
           <input name="name" onChange={handleChange} value={formValues.name} />
@@ -83,6 +91,7 @@ const EditProduct = (props) => {
           />
         </div>
         <button type="submit">Save Changes</button>
+        <button onClick = {()=>{removeHandler()}}>Remove Product</button>
       </form>
       <img
         style={{ height: "200px" }}
