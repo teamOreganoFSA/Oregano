@@ -39,16 +39,21 @@ router.put("/auth", requireToken, async (req, res, next) => {
       },
     });
     const product = await Product.findByPk(req.body.productId);
+    console.log("product information", product);
     const changeQuantity = await OrderProduct.update(
       {
         quantity: req.body.quantity,
       },
       {
         where: { orderId: order.id, productId: product.id },
+        returning: true,
+        plain: true,
       }
     );
+    console.log("api cart", changeQuantity);
     res.json(changeQuantity);
   } catch (err) {
+    console.error(err);
     next(err);
   }
 });

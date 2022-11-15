@@ -1,4 +1,6 @@
 import axios from "axios";
+import { conformCart } from "../components/helpfunctions/conformCart";
+
 /**
  * ACTION TYPES
  */
@@ -28,41 +30,131 @@ export const clearCart = () => ({
  */
 //all products WITH FILTER MEN OR WOMEN CONDITIONAL
 
-export const fetchCart = () => {
+export const cartQuantity = (itemId, inputQty) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
     const localCart = window.localStorage.getItem("cart");
-    // localCart && dispatch(_fetchCart(JSON.parse(localCart)));
     try {
       if (token) {
-        const { data } = await axios.get("/api/cart/auth", {
+        const config = {
           headers: {
             authorization: token,
           },
-        });
-        console.log(data);
-        dispatch(_fetchCart(data));
+        };
+        // fetchCart();
+        // console.log("itemid", itemId);
+        if (!itemId) {
+          return;
+        }
+        const newQuantity = { productId: itemId, quantity: inputQty };
+        const { data } = await axios.put("/api/cart/auth", newQuantity, config);
+        dispatch(_fetchCart(data[1].dataValues));
       } else {
         const data = JSON.parse(localCart);
-        console.log(data);
+        const newData = conformCart(data);
+        let foundId;
+        for (let i = 0; i < newData.length; i++) {
+          if (newData[i].id === itemId) {
+            foundId = newData[i];
+          }
+        }
+        // console.log("THE found Id>>>", foundId);
+        if (!foundId) {
+          dispatch(_fetchCart(newData));
+        } else {
+          foundId.orderProducts.quantity = inputQty;
+          dispatch(_fetchCart(foundId));
+        }
+      }
+    } catch (error) {
+      console.log("Unable to change quantity");
+      console.error(error);
+    }
+  };
+};
+
+export const fetchCart = () => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem("token");
+    try {
+      if (token) {
+        const config = {
+          headers: {
+            authorization: token,
+          },
+        };
+        const { data } = await axios.get("/api/cart/auth", config);
         dispatch(_fetchCart(data));
       }
-      // console.log(data);
-      // dispatch(_fetchCart(data));
-    } catch (error) {
+    } catch (err) {
       console.log("Unable to fetch cart");
       console.error(error);
     }
   };
 };
 
-export const addToCart = (props) => {
-  const existingCart = JSON.parse(window.localStorage.getItem("cart")) || [];
-  window.localStorage.setItem("cart", JSON.stringify([...existingCart, props]));
+export const addToCart = (product, userId) => {
   return async (dispatch) => {
-    dispatch(_addToCart(props));
+    const token = window.localStorage.getItem("token");
+    try {
+      if (token) {
+        const config = {
+          headers: {
+            authorization: token,
+          },
+        };
+        console.log("tokennn", token);
+
+        const { data } = await axios.post(
+          `/api/products/${product.id}/auth`,
+          {},
+          config
+        );
+        console.log("DATA >>>>", data);
+        dispatch(_addToCart(data));
+      }
+      const existingCart =
+        JSON.parse(window.localStorage.getItem("cart")) || [];
+      window.localStorage.setItem(
+        "cart",
+        JSON.stringify([...existingCart, product])
+      );
+
+      dispatch(_addToCart(product));
+    } catch (err) {
+      console.log("Unable to add to cart");
+      console.error(err);
+    }
   };
 };
+
+// export const addToCart = (product) => {
+//   return async (dispatch) => {
+//     const token = window.localStorage.getItem("token");
+//     try {
+//       if (token) {
+//         const config = {
+//           headers: {
+//             authorization: token,
+//           },
+//         };
+//         const { data } = await axios.post("/api/products/:productId/auth");
+//       }
+//       const existingCart =
+//         JSON.parse(window.localStorage.getItem("cart")) || [];
+//       window.localStorage.setItem(
+//         "cart",
+//         JSON.stringify([...existingCart, product])
+//       );
+//       return async (dispatch) => {
+//         dispatch(_addToCart(product));
+//       };
+//     } catch (err) {
+//       console.log("Unable to add to cart");
+//       console.error(err);
+//     }
+//   };
+// };
 
 /**
  * REDUCER
@@ -71,6 +163,9 @@ export const addToCart = (props) => {
 export default function (state = [], action) {
   switch (action.type) {
     case FETCH_CART:
+      if (!action.cart) {
+        return [...state];
+      }
       return action.cart;
     case ADD_TO_CART:
       return [...state, action.product];

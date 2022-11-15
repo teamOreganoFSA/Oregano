@@ -5,7 +5,7 @@ import { addToCart } from "../store/cart";
 
 const Card = (props) => {
   const { product } = props;
-
+  const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
   return (
     <div>
@@ -18,7 +18,7 @@ const Card = (props) => {
           <h3 className="card_price">{product.price}</h3>
           <h4 className="card_description">{product.description}</h4>
           <button
-            onClick={() => dispatch(addToCart(product))}
+            onClick={() => dispatch(addToCart(product, auth.id))}
             className="card_btn"
           >
             Add to Cart
