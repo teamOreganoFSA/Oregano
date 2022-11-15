@@ -56,9 +56,18 @@ router.put("/auth", requireToken, async (req, res, next) => {
 // DELETE /api/cart/auth
 router.delete("/auth", requireToken, async (req, res, next) => {
   try {
-    const product = await Product.findByPk(req.body.productId);
-    await product.destroy();
-    res.json(product);
+    const product = await Product.findOne({
+      where: {
+        id: req.body.productId,
+      },
+    });
+    const chosenProduct = await OrderProduct.findOne({
+      where: {
+        productId: product.id,
+      },
+    });
+    await chosenProduct.destroy();
+    res.json(chosenProduct);
   } catch (err) {
     next(err);
   }

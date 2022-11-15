@@ -5,6 +5,7 @@ import "../components/Styles/cart.css"
 
 const Cart = () => {
   const { cart } = useSelector((state) => state);
+
   console.log(cart)
 
   const dispatch = useDispatch();
