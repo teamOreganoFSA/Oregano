@@ -1,7 +1,8 @@
 import React, { useEffect, state, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { cartQuantity, fetchCart } from "../store/cart";
+import { v4 as uuidv4 } from "uuid";
+import { cartQuantity, fetchCart, clearCart } from "../store/cart";
 import { conformCart } from "./helpfunctions/conformCart";
 
 import "../components/Styles/cart.css";
@@ -35,6 +36,7 @@ const Cart = (props) => {
     console.log("cart before condition >>", cart);
     const cartToRender = token ? cart : newCart || [];
     console.log("adding to cart ERROR >>>>>", cartToRender);
+    console.log("Printing uuid: ", uuidv4());
     return loaded ? (
       <div>
         {cartToRender.map((item, index) => {
@@ -56,15 +58,17 @@ const Cart = (props) => {
               />
             </div>
           ) : (
-            <h1 key={index}>loading</h1>
+            <h1 key={uuidv4()}>loading</h1>
           );
         })}
-        <div>
-          <button>Clear Cart</button>
-        </div>
+        {!props.isCheckout && (
+          <div>
+            <button onClick={() => dispatch(clearCart())}>Clear Cart</button>
+          </div>
+        )}
         {!props.isCheckout && (
           <Link to="/checkout">
-            <button>Checkout</button>
+            <button disabled={!cartToRender.length}>Checkout</button>
           </Link>
         )}
       </div>

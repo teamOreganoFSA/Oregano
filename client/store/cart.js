@@ -103,14 +103,12 @@ export const addToCart = (product) => {
             authorization: token,
           },
         };
-        console.log("tokennn", token);
 
         const { data } = await axios.post(
           `/api/products/${product.id}/auth`,
           {},
           config
         );
-        console.log("DATA >>>>", data);
         dispatch(_addToCart(data));
       }
       const existingCart =
@@ -129,7 +127,17 @@ export const addToCart = (product) => {
 };
 
 export const clearCart = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem("token");
+    if (token) {
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      await axios.delete("/api/cart/auth/all", config);
+      dispatch(_clearCart());
+    }
     window.localStorage.removeItem("cart");
     dispatch(_clearCart);
   };
