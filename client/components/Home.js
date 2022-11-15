@@ -54,11 +54,11 @@ export const Home = () => {
       <br></br>
 
       <div className="shop">
-        <body>
+        <div>
           <span>
             <Link to="/products" className="shopnow" />
           </span>
-        </body>
+        </div>
         <br></br>
         <br></br>
         <br></br>

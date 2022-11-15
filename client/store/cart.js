@@ -34,13 +34,21 @@ export const fetchCart = () => {
     const localCart = window.localStorage.getItem("cart");
     // localCart && dispatch(_fetchCart(JSON.parse(localCart)));
     try {
-      const { data } = await axios.get("/api/cart/auth", {
-        headers: {
-          authorization: token,
-        },
-      });
-      console.log(data);
-      dispatch(_fetchCart(data));
+      if (token) {
+        const { data } = await axios.get("/api/cart/auth", {
+          headers: {
+            authorization: token,
+          },
+        });
+        console.log(data);
+        dispatch(_fetchCart(data));
+      } else {
+        const data = JSON.parse(localCart);
+        console.log(data);
+        dispatch(_fetchCart(data));
+      }
+      // console.log(data);
+      // dispatch(_fetchCart(data));
     } catch (error) {
       console.log("Unable to fetch cart");
       console.error(error);
