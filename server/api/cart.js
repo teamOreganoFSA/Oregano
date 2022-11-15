@@ -77,3 +77,22 @@ router.delete("/auth", requireToken, async (req, res, next) => {
     next(err);
   }
 });
+
+// DELETE /api/cart/auth/all
+router.delete("/auth/all", requireToken, async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        userId: req.user.id,
+      },
+    });
+    const chosenCart = await OrderProduct.destroy({
+      where: {
+        orderId: order.id,
+      },
+    });
+    res.json(chosenCart);
+  } catch (err) {
+    next(err);
+  }
+});
