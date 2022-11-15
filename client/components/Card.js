@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../store/cart";
+import "../components/Styles/Card.css"
 
 const Card = (props) => {
   const { product } = props;
@@ -22,7 +23,7 @@ const Card = (props) => {
             className="card_btn"
           >
             Add to Cart
-          </button>
+          </button >
           <Link to={`/products/single/${props.id}`}>
             <button className="card_btn">View Product</button>
           </Link>

@@ -4,17 +4,20 @@ import { FaShoppingCart, FaHome, FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { logout} from "../store/auth";
 import { clearCart } from "../store/cart";
-
+import "../components/Styles/Navbar.css"
 
 const Navbar = () => {
   const auth = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
+
+
   const dispatch = useDispatch();
   const logoutHandler = () => {
     dispatch(logout());
     dispatch(clearCart());
   };
 
+ 
   return (
     <div className="header">
       <Link to="/">

@@ -41,6 +41,7 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
   - (local storage needs work) _Think of a typical user experience on popular websites from a guest user and logged-in user perspective._
   - (have users info autfilled, guest still needs to fill out their info) _You can just start with by simulating the experience of checking out with a simple confirmation page._
 - create an account so I can have a logged-in experience.
+>>>>>>> 3b5f904f9f71a97304782abbd98ba93d273e821f
 
 ### As a logged-in customer, I want to be able to:
 

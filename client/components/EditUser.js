@@ -4,11 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { fetchUser } from "../store/user";
+// import { fetchUser } from "../store/user";
 
-const EditUser = (props) => {
+const EditUser = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+
   const user = useSelector((state) => state.auth);
   const [formValues, setFormValues] = useState({
     firstName: "" ,
@@ -19,7 +20,6 @@ const EditUser = (props) => {
   });
 
   useEffect(() => {
-    dispatch(fetchUser());
     setFormValues({
       firstName: user.firstName,
       lastName: user.lastName,
@@ -27,7 +27,9 @@ const EditUser = (props) => {
       password: user.password,
       address: user.address,
     });
-  }, [user]);
+  }, [])
+    
+  
   
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
