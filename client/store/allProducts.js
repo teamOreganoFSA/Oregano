@@ -4,7 +4,7 @@ import axios from "axios";
  */
 const FETCH_ALL_PRODUCTS = "FETCH_ALL_PRODUCTS";
 const ADD_NEW_PRODUCT = "ADD_NEW_PRODUCT";
-
+const DELETE_PRODUCT = "DELETE_PRODUCT";
 /**
  * ACTION CREATORS
  */
@@ -18,6 +18,10 @@ const _addNewProduct = (product) => ({
   product,
 });
 
+const _deleteProduct = (product) => ({
+  type: DELETE_PRODUCT,
+  product,
+});
 /**
  * THUNK CREATORS
  */
@@ -49,6 +53,23 @@ export const addNewProduct = (product) => {
   };
 };
 
+export const deleteProduct = (id) => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem("token");
+    if (token) {
+      try {
+        const { data } = await axios.delete(`/api/admin/${id}`, {
+          headers: { authorization: token },
+        });
+        dispatch(_deleteProduct(data));
+      } catch (error) {
+        console.log("Unable to delete product");
+        console.error(error);
+      }
+    }
+  };
+};
+
 /**
  * REDUCER
  */
@@ -59,6 +80,8 @@ export default function (state = [], action) {
       return action.products;
     case ADD_NEW_PRODUCT:
       return [...state, action.product];
+    case DELETE_PRODUCT:
+      return action.products;
     default:
       return state;
   }
