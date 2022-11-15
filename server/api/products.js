@@ -92,3 +92,14 @@ router.post("/:productId/auth", requireToken, async (req, res, next) => {
     next(err);
   }
 });
+
+// //Delete single product
+// router.delete("/single/:productId", async (req, res, next) => {
+//   try {
+//     const product = await Product.findByPk(req.params.productId);
+//     await product.destroy()
+//     res.send(product)
+//   } catch (err) {
+//     next(err);
+//   }
+// });

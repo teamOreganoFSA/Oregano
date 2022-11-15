@@ -29,20 +29,6 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 
 ### As a customer/visitor, I want to be able to:
 
-<<<<<<< HEAD
-x access a deployed version of the website so I can browse and purchase products.
-x view all available products so I can pick from a variety.
-x view a single product so I can see more details.
-- add a product to my cart so I can collect my desired products in one place.
-- edit my cart if I change my mind:
-  - change the quantity of a product in my cart.
-  - remove a product in my cart.
-  - _No one else should be able to edit my cart except me._
-- "checkout" the items in my cart so I can purchase my desired goods.
-  - _Think of a typical user experience on popular websites from a guest user and logged-in user perspective._
-  - _You can just start with by simulating the experience of checking out with a simple confirmation page._
-x create an account so I can have a logged-in experience.
-=======
 - access a deployed version of the website so I can browse and purchase products.
 - X view all available products so I can pick from a variety.
 - X view a single product so I can see more details.
@@ -67,17 +53,10 @@ x create an account so I can have a logged-in experience.
 
 - have validated data to ensure reliability.
   - _i.e. each customer that creates an account should only be able to do so once with a single email address._
-<<<<<<< HEAD
-- have full rights to make backend requests to add, edit, and remove products.
-  _No one else should have access._
-  x view user information.
- _No one else should have access._
-=======
 - (need to work on add and remove product) have full rights to make backend requests to add, edit, and remove products.
   - X _No one else should have access._
 - view user information.
   - _No one else should have access._
->>>>>>> 3b5f904f9f71a97304782abbd98ba93d273e821f
 
 ### As an engineer, I want to:
 
