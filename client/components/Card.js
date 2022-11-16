@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../store/cart";
-import "../components/Styles/Card.css"
+import "../components/Styles/Card.css";
 
 const Card = (props) => {
   const { product } = props;
@@ -17,13 +17,13 @@ const Card = (props) => {
         <div className="card_body">
           <h2 className="card_name">{product.name}</h2>
           <h3 className="card_price">{product.price}</h3>
-          <h4 className="card_description">{product.description}</h4>
+          {/* <h4 className="card_description">{product.description}</h4> */}
           <button
             onClick={() => dispatch(addToCart(product, auth.id))}
             className="card_btn"
           >
             Add to Cart
-          </button >
+          </button>
           <Link to={`/products/single/${props.id}`}>
             <button className="card_btn">View Product</button>
           </Link>

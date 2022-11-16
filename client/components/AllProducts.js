@@ -22,7 +22,7 @@ export class AllProducts extends React.Component {
                 imageURL={product.imageURL}
                 name={product.name}
                 price={product.price}
-                description={product.description}
+                // description={product.description}
                 id={product.id}
               />
             </div>
