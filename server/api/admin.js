@@ -19,11 +19,18 @@ const requireToken = async (req, res, next) => {
 
 // GET /api/admin/users
 router.get("/users", requireToken, async (req, res, next) => {
-  if (req.admin.id) {
-    const users = User.findAll({
-      attributes: ["id", "firstName", "lastName", "email"],
-    });
-    res.json(users);
+  try {
+    if (req.admin.id) {
+      const users = await User.findAll({
+        where: {
+          userType: "USER",
+        },
+        attributes: ["id", "firstName", "lastName", "email"],
+      });
+      res.send(users);
+    }
+  } catch (err) {
+    console.error(err);
   }
 });
 
