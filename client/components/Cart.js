@@ -1,12 +1,13 @@
 import React, { useEffect, state, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
-import { cartQuantity, fetchCart } from "../store/cart";
+import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+import { cartQuantity, fetchCart, clearCart } from "../store/cart";
 import { conformCart } from "./helpfunctions/conformCart";
 
 import "../components/Styles/cart.css";
 
-const Cart = () => {
+const Cart = (props) => {
   const [qty, setQty] = useState({});
   const { cart } = useSelector((state) => state);
 
@@ -38,6 +39,7 @@ const Cart = () => {
     console.log("cart before condition >>", cart);
     const cartToRender = token ? cart : newCart || [];
     console.log("adding to cart ERROR >>>>>", cartToRender);
+    console.log("Printing uuid: ", uuidv4());
     return loaded ? (
       <div>
         {cartToRender.map((item, index) => {
@@ -48,6 +50,7 @@ const Cart = () => {
                 ${item.price} x {item.orderProducts?.quantity}
               </p>
               <input
+                disabled={props.isCheckout}
                 onChange={(e, id = item.id) => {
                   handleChange(e, id);
                 }}
@@ -58,10 +61,19 @@ const Cart = () => {
               />
             </div>
           ) : (
-            <h1 key={index}>loading</h1>
+            <h1 key={uuidv4()}>loading</h1>
           );
         })}
-        <button>Checkout</button>
+        {!props.isCheckout && (
+          <div>
+            <button onClick={() => dispatch(clearCart())}>Clear Cart</button>
+          </div>
+        )}
+        {!props.isCheckout && (
+          <Link to="/checkout">
+            <button disabled={!cartToRender.length}>Checkout</button>
+          </Link>
+        )}
       </div>
     ) : (
       <h1>loading</h1>

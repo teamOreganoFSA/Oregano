@@ -29,10 +29,10 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 
 ### As a customer/visitor, I want to be able to:
 
-- access a deployed version of the website so I can browse and purchase products.
+- X access a deployed version of the website so I can browse and purchase products.
 - X view all available products so I can pick from a variety.
 - X view a single product so I can see more details.
-- x (local storage needs work) add a product to my cart so I can collect my desired products in one place.
+- X (local storage needs work) add a product to my cart so I can collect my desired products in one place.
 - x (local storage needs work) edit my cart if I change my mind:
   - x (local storage needs work) change the quantity of a product in my cart.
   - x (local storage needs work) remove a product in my cart.
@@ -41,7 +41,6 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
   - (local storage needs work) _Think of a typical user experience on popular websites from a guest user and logged-in user perspective._
   - (have users info autfilled, guest still needs to fill out their info) _You can just start with by simulating the experience of checking out with a simple confirmation page._
 - create an account so I can have a logged-in experience.
->>>>>>> 3b5f904f9f71a97304782abbd98ba93d273e821f
 
 ### As a logged-in customer, I want to be able to:
 
