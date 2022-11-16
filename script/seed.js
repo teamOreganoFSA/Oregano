@@ -108,7 +108,7 @@ const seedProducts = [
     id: 6,
     category: "MEN",
     name: "Recycled Hoodie",
-    descriptions: "Hoodie made from recycled materials",
+    description: "Hoodie made from recycled materials",
     inventoryQuantity: 80,
     price: 180,
     imageURL:
@@ -169,7 +169,7 @@ const seedProducts = [
     id: 12,
     category: "MEN",
     name: "Recycled button down Long sleeve",
-    descriptions:
+    description:
       "Button down long sleeve shirt made from recycled materials, while still being fashionable.",
     inventoryQuantity: 90,
     price: 190,
