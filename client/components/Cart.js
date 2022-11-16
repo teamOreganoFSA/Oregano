@@ -4,14 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { cartQuantity, fetchCart } from "../store/cart";
 import { conformCart } from "./helpfunctions/conformCart";
 
-import "../components/Styles/cart.css"
-
+import "../components/Styles/cart.css";
 
 const Cart = () => {
   const [qty, setQty] = useState({});
   const { cart } = useSelector((state) => state);
 
-  console.log(cart)
+  console.log(cart);
 
   const dispatch = useDispatch();
 
@@ -31,6 +30,9 @@ const Cart = () => {
 
   {
     const token = window.localStorage.getItem("token");
+    if (!window.localStorage.getItem("cart")) {
+      window.localStorage.setItem("cart", "[]");
+    }
     const localCart = JSON.parse(window.localStorage.getItem("cart"));
     const newCart = conformCart(localCart);
     console.log("cart before condition >>", cart);
@@ -65,7 +67,6 @@ const Cart = () => {
       <h1>loading</h1>
     );
   }
-
 };
 
 export default Cart;

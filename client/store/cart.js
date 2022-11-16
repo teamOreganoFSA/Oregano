@@ -1,6 +1,5 @@
 import axios from "axios";
 import { conformCart } from "../components/helpfunctions/conformCart";
-
 /**
  * ACTION TYPES
  */
@@ -93,6 +92,8 @@ export const fetchCart = () => {
   };
 };
 
+let permission = 1;
+
 export const addToCart = (product, userId) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
@@ -104,30 +105,53 @@ export const addToCart = (product, userId) => {
           },
         };
         console.log("tokennn", token);
+        console.log("product param", product);
 
+        const localCart = JSON.parse(window.localStorage.getItem("cart"));
+        console.log("PERMISSION", permission);
+        if (permission === 1) {
+          const mapped = localCart.map((item) => item.id);
+          mapped.push(product.id);
+          console.log("mapping", mapped);
+          for (let i = 0; i < mapped.length; i++) {
+            const { data } = await axios.post(
+              `/api/products/${mapped[i]}/auth`,
+              {},
+              config
+            );
+            console.log(i, mapped.length - 1);
+            console.log("here");
+            if (i === mapped.length - 1) {
+              console.log("permission before", permission);
+              permission = 0;
+              console.log("permission in for", permission);
+              dispatch(_addToCart(data));
+            }
+            dispatch(_addToCart(data));
+          }
+        }
+        console.log("here?");
         const { data } = await axios.post(
           `/api/products/${product.id}/auth`,
           {},
           config
         );
-        console.log("DATA >>>>", data);
         dispatch(_addToCart(data));
+      } else {
+        const existingCart =
+          JSON.parse(window.localStorage.getItem("cart")) || [];
+        window.localStorage.setItem(
+          "cart",
+          JSON.stringify([...existingCart, product])
+        );
+        dispatch(_addToCart(product));
       }
-      const existingCart =
-        JSON.parse(window.localStorage.getItem("cart")) || [];
-      window.localStorage.setItem(
-        "cart",
-        JSON.stringify([...existingCart, product])
-      );
-
-      dispatch(_addToCart(product));
     } catch (err) {
       console.log("Unable to add to cart");
       console.error(err);
     }
   };
 };
-
 // export const addToCart = (product) => {
 //   return async (dispatch) => {
 //     const token = window.localStorage.getItem("token");
