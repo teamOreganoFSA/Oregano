@@ -19,11 +19,19 @@ const requireToken = async (req, res, next) => {
 
 // GET /api/admin/users
 router.get("/users", requireToken, async (req, res, next) => {
-  if (req.admin.id) {
-    const users = User.findAll({
-      attributes: ["id", "firstName", "lastName", "email"],
-    });
-    res.json(users);
+  try {
+    if (req.admin.id) {
+      const users = await User.findAll({
+        where: {
+          userType: "USER",
+        },
+        attributes: ["id", "firstName", "lastName", "email"],
+      });
+      res.send(users);
+    }
+  } catch (err) {
+    console.error(err);
+    next(err);
   }
 });
 
@@ -58,10 +66,10 @@ router.delete("/:productId", requireToken, async (req, res, next) => {
     if (req.admin.id) {
       const product = await Product.findByPk(req.params.productId);
       await product.destroy();
-      const allProducts = await Product.findAll()
+      const allProducts = await Product.findAll();
       res.send(allProducts);
     }
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
