@@ -4,7 +4,7 @@ import "../components/Styles/HomePage.css";
 
 export const Home = () => {
   return (
-    <body>
+    <section>
       <div className="hero-image">
         <div className="hero-text">
           <h1>This is Oregano</h1>
@@ -45,7 +45,7 @@ export const Home = () => {
           <Link to="/products" className="shopnow" />
         </span>
       </div>
-    </body>
+    </section>
   );
 };
 
