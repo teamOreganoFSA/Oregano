@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-// import { fetchUser } from "../store/user";
+import { fetchUser } from "../store/user";
 
 const EditUser = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.auth);
+  const {user} = useSelector((state) => state);
   const newUser = useSelector((state) => state.user);
   const [formValues, setFormValues] = useState({
     firstName: "",
@@ -28,7 +28,8 @@ const EditUser = () => {
       password: user.password,
       address: user.address,
     });
-  }, [newUser]);
+    dispatch(fetchUser())
+  }, []);
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
