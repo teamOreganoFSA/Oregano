@@ -17,11 +17,12 @@ const AdminDash = () => {
 
   const fetchAllUsers = async () => {
     try {
-      const { data } = await axios.get("/api/users", {
+      const { data } = await axios.get("/api/admin/users", {
         headers: {
           authorization: window.localStorage.getItem("token"),
         },
       });
+      console.log("data :>> ", data);
       setAllUsers(data);
     } catch (error) {
       console.log(error);
@@ -32,6 +33,7 @@ const AdminDash = () => {
   return (
     <div className="dash-container">
       <div className="products-container">
+        <h2>All Products</h2>
         {allProducts.map((product) => (
           <div key={product.id} className="single-product">
             <p>{product.name}</p>
@@ -47,21 +49,20 @@ const AdminDash = () => {
       </Link>
       <h2>All Users</h2>
       <div style={{ margin: "15px" }}>
-        {allUsers.map((user) => {
-          return (
-            <div style={{ backgroundColor: "whitesmoke" }}>
-              <p>
-                {user.firstName} {user.lastName}
-              </p>
-              <p> {user.email}</p>
-              <p> {user.address}</p>
-              {user.userType === "ADMIN" && (
-                <p style={{ color: "red" }}>ADMIN</p>
-              )}
-              <hr />
-            </div>
-          );
-        })}
+        {allUsers &&
+          allUsers.map((user) => {
+            return (
+              <div key={user.id} style={{ backgroundColor: "whitesmoke" }}>
+                <p>
+                  {user.firstName} {user.lastName}
+                </p>
+                <p> {user.email}</p>
+                <p> {user.address}</p>
+
+                <hr />
+              </div>
+            );
+          })}
       </div>
     </div>
   );
