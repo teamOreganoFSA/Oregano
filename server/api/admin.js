@@ -69,7 +69,7 @@ router.delete("/:productId", requireToken, async (req, res, next) => {
       const allProducts = await Product.findAll();
       res.send(allProducts);
     }
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
