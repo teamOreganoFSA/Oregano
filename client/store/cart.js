@@ -21,7 +21,7 @@ const _addToCart = (product) => ({
   product,
 });
 
-export const clearCart = () => ({
+export const _clearCart = () => ({
   type: CLEAR_CART,
 });
 
@@ -88,12 +88,12 @@ export const fetchCart = () => {
       }
     } catch (err) {
       console.log("Unable to fetch cart");
-      console.error(error);
+      console.error(err);
     }
   };
 };
 
-export const addToCart = (product, userId) => {
+export const addToCart = (product) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
     try {
@@ -103,14 +103,12 @@ export const addToCart = (product, userId) => {
             authorization: token,
           },
         };
-        console.log("tokennn", token);
 
         const { data } = await axios.post(
           `/api/products/${product.id}/auth`,
           {},
           config
         );
-        console.log("DATA >>>>", data);
         dispatch(_addToCart(data));
       }
       const existingCart =
@@ -128,33 +126,22 @@ export const addToCart = (product, userId) => {
   };
 };
 
-// export const addToCart = (product) => {
-//   return async (dispatch) => {
-//     const token = window.localStorage.getItem("token");
-//     try {
-//       if (token) {
-//         const config = {
-//           headers: {
-//             authorization: token,
-//           },
-//         };
-//         const { data } = await axios.post("/api/products/:productId/auth");
-//       }
-//       const existingCart =
-//         JSON.parse(window.localStorage.getItem("cart")) || [];
-//       window.localStorage.setItem(
-//         "cart",
-//         JSON.stringify([...existingCart, product])
-//       );
-//       return async (dispatch) => {
-//         dispatch(_addToCart(product));
-//       };
-//     } catch (err) {
-//       console.log("Unable to add to cart");
-//       console.error(err);
-//     }
-//   };
-// };
+export const clearCart = () => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem("token");
+    if (token) {
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      await axios.delete("/api/cart/auth/all", config);
+      dispatch(_clearCart());
+    }
+    window.localStorage.removeItem("cart");
+    dispatch(_clearCart);
+  };
+};
 
 /**
  * REDUCER
