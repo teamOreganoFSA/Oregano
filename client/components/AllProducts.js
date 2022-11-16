@@ -14,7 +14,7 @@ export class AllProducts extends React.Component {
     console.log(products);
     return (
       <div className="wrapper">
-        <div>
+        <div className="grid-container">
           {products.map((product) => (
             <div key={product.id}>
               <Card
