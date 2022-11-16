@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Cart from "./Cart";
 import { me } from "../store/auth";
-import { fetchCart } from "../store/cart";
+import { fetchCart, checkOut } from "../store/cart";
 
 const Checkout = () => {
   // Possibly do amazon checkout style
@@ -45,9 +45,9 @@ const Checkout = () => {
       {/* hook up to place order */}
       <button
         onClick={() => {
-          window.alert(
-            `Thank you for your order, ${auth.firstName || "Guest"}!`
-          );
+          dispatch(checkOut());
+          window.alert(`Thank you for your order!${auth.firstName}`);
+
         }}
       >
         Place your order
