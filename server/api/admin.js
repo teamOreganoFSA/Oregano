@@ -66,7 +66,8 @@ router.delete("/:productId", requireToken, async (req, res, next) => {
     if (req.admin.id) {
       const product = await Product.findByPk(req.params.productId);
       await product.destroy();
-      res.send(product);
+      const allProducts = await Product.findAll();
+      res.send(allProducts);
     }
   } catch (err) {
     next(err);
