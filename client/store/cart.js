@@ -1,6 +1,5 @@
 import axios from "axios";
 import { conformCart } from "../components/helpfunctions/conformCart";
-
 /**
  * ACTION TYPES
  */
@@ -109,22 +108,21 @@ export const addToCart = (product) => {
             authorization: token,
           },
         };
-
         const { data } = await axios.post(
           `/api/products/${product.id}/auth`,
           {},
           config
         );
         dispatch(_addToCart(data));
+      } else {
+        const existingCart =
+          JSON.parse(window.localStorage.getItem("cart")) || [];
+        window.localStorage.setItem(
+          "cart",
+          JSON.stringify([...existingCart, product])
+        );
+        dispatch(_addToCart(product));
       }
-      const existingCart =
-        JSON.parse(window.localStorage.getItem("cart")) || [];
-      window.localStorage.setItem(
-        "cart",
-        JSON.stringify([...existingCart, product])
-      );
-
-      dispatch(_addToCart(product));
     } catch (err) {
       console.log("Unable to add to cart");
       console.error(err);

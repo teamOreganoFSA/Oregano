@@ -20,11 +20,28 @@ const setAuth = (auth) => ({ type: SET_AUTH, auth });
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
+    const config = {
+      headers: {
+        authorization: token,
+      },
+    };
     const res = await axios.get("/auth/me", {
       headers: {
         authorization: token,
       },
     });
+    const localCart = JSON.parse(window.localStorage.getItem("cart"));
+    if (localCart) {
+      const mapped = localCart.map((item) => item.id);
+      for (let i = 0; i < mapped.length; i++) {
+        await axios.post(`/api/products/${mapped[i]}/auth`, {}, config);
+
+        if (i === mapped.length - 1) {
+          window.localStorage.removeItem("cart");
+        }
+      }
+    }
+    dispatch(fetchCart());
     return dispatch(setAuth(res.data));
   }
 };

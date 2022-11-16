@@ -27,7 +27,6 @@ const Cart = (props) => {
     return event.target.value;
   };
 
-  // delete handler: dispatches deleteItem(id)
   const deleteHandler = (e, id) => {
     console.log("Printing id: ", id);
     console.log("Printing e", e);
@@ -37,18 +36,17 @@ const Cart = (props) => {
   };
 
   const token = window.localStorage.getItem("token");
+
+  if (!window.localStorage.getItem("cart")) {
+    window.localStorage.setItem("cart", "[]");
+  }
   const localCart = JSON.parse(window.localStorage.getItem("cart"));
   const newCart = conformCart(localCart);
-  console.log("Printing cart before condition: ", cart);
-  console.log("Printing newCart: ", newCart);
-  let cartToRender = token ? cart : newCart || [];
-  console.log("Printing cartToRender >>>>>", cartToRender);
+  console.log("cart before condition >>", cart);
+  const cartToRender = token ? cart : newCart || [];
+  console.log("adding to cart ERROR >>>>>", cartToRender);
+  console.log("Printing uuid: ", uuidv4());
 
-  /**
-   * cartToRender.map is not function (error)
-   * deleteHandler works but requires refresh and gives errors
-   *
-   */
   return loaded ? (
     <div>
       {cartToRender.map((item, index) => {
