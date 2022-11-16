@@ -29,6 +29,7 @@ const Cart = (props) => {
     return event.target.value;
   };
 
+  // delete handler: dispatches deleteItem(id)
   const deleteHandler = (e, id) => {
     console.log("Printing id: ", id);
     console.log("Printing e", e.target);
@@ -42,7 +43,12 @@ const Cart = (props) => {
     console.log("cart before condition >>", cart);
     const cartToRender = token ? cart : newCart || [];
     console.log("adding to cart ERROR >>>>>", cartToRender);
-    console.log("Printing uuid: ", uuidv4());
+
+    /**
+     * cartToRender.map is not function (error)
+     * deleteHandler works but requires refresh and gives errors
+     *
+     */
     return loaded ? (
       <div>
         {cartToRender.map((item, index) => {

@@ -26,10 +26,10 @@ export const _clearCart = () => ({
   type: CLEAR_CART,
 });
 
-// const _deleteItem = (product) => ({
-//   type: DELETE_ITEM,
-//   product,
-// });
+const _deleteItem = (updatedCart) => ({
+  type: DELETE_ITEM,
+  updatedCart,
+});
 
 /**
  * THUNK CREATORS
@@ -132,22 +132,31 @@ export const addToCart = (product) => {
   };
 };
 
-// export const deleteItem = (id) => {
-//   return async (dispatch) => {
-//     const token = window.localStorage.getItem("token");
-//     if (token) {
-//       const config = {
-//         headers: {
-//           authorization: token,
-//         },
-//       };
-//       await axios.delete("/api/cart/auth", config);
-//       dispatch(_deleteItem(id));
-//     }
-//     window.localStorage.removeItem("cart");
-//     dispatch(_deleteItem(id));
-//   };
-// };
+export const deleteItem = (id) => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem("token");
+    if (token) {
+      const config = {
+        headers: {
+          authorization: token,
+        },
+        data: {
+          productId: id,
+        },
+      };
+      const updatedCart = await axios.delete("/api/cart/auth", config);
+      console.log("Printing updated cart: ", updatedCart);
+      dispatch(_deleteItem(updatedCart));
+    }
+    const existingCart = JSON.parse(window.localStorage.getItem("cart")) || [];
+    existingCart.reduce((prev, curr) => {
+      if (curr.id === id) {
+        return [...prev, curr];
+      }
+    }, []);
+    window.localStorage.setItem("cart", JSON.stringify(existingCart));
+  };
+};
 
 export const clearCart = () => {
   return async (dispatch) => {
@@ -181,8 +190,8 @@ export default function (state = [], action) {
       return [...state, action.product];
     case CLEAR_CART:
       return [];
-    // case DELETE_ITEM:
-    //   return state;
+    case DELETE_ITEM:
+      return action.updatedCart;
     default:
       return state;
   }
