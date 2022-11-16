@@ -171,7 +171,7 @@ export const clearCart = () => {
       dispatch(_clearCart());
     }
     window.localStorage.removeItem("cart");
-    dispatch(_clearCart);
+    dispatch(_clearCart());
   };
 };
 
