@@ -92,6 +92,8 @@ export const fetchCart = () => {
   };
 };
 
+let permission = 1;
+
 export const addToCart = (product) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
