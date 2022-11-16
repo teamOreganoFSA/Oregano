@@ -18,9 +18,9 @@ const _addNewProduct = (product) => ({
   product,
 });
 
-const _deleteProduct = (product) => ({
+const _deleteProduct = (products) => ({
   type: DELETE_PRODUCT,
-  product,
+  products,
 });
 /**
  * THUNK CREATORS
@@ -61,6 +61,7 @@ export const deleteProduct = (id) => {
         const { data } = await axios.delete(`/api/admin/${id}`, {
           headers: { authorization: token },
         });
+        console.log("data",data)
         dispatch(_deleteProduct(data));
       } catch (error) {
         console.log("Unable to delete product");
@@ -81,7 +82,7 @@ export default function (state = [], action) {
     case ADD_NEW_PRODUCT:
       return [...state, action.product];
     case DELETE_PRODUCT:
-      return action.products;
+      return action.products
     default:
       return state;
   }

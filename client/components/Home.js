@@ -11,23 +11,27 @@ export const Home = () => {
           <h3>Live Organically</h3>
         </div>
       </div>
+      <div data-aos="fade-right">
+        <Link to="/products/MEN">
+          <h3 id="men">Shop Men</h3>
+        </Link>
+      </div>
 
-      <Link to="/products/MEN">
-        <h3 id="men">Shop Men</h3>
-      </Link>
-      <Link to="/products/WOMEN">
-        <h3 id="women">Shop Women</h3>
-      </Link>
+      <div data-aos="fade-left">
+        <Link to="/products/WOMEN">
+          <h3 id="women">Shop Women</h3>
+        </Link>
+      </div>
 
       <div
         className="oregano"
         data-aos="fade-right"
         data-aos-offset="250"
         data-aos-easing="ease-in-sine"
-        data-aos-duration="1000"
+        data-aos-duration="500"
       >
         <h2 id="oregano">What Is Oregano?</h2>
-        <p>
+        <p id="homepage-p">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and

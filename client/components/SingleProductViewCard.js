@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../store/cart";
 
 const SingleProductViewCard = (props) => {
+  const { product } = props;
   const dispatch = useDispatch();
+  const { auth } = useSelector((state) => state);
 
   return (
     <div class>
@@ -15,7 +17,7 @@ const SingleProductViewCard = (props) => {
           <h2 className="card_name">{props.name}</h2>
           <h3 className="card_price">{props.price}</h3>
           <h4 className="card_description">{props.description}</h4>
-          <button className="card_button">Add to Cart</button>
+          <button className="card_button" onClick = {()=>dispatch(addToCart(product, auth.id))}>Add to Cart</button>
         </div>
       </div>
     </div>

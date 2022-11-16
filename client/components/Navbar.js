@@ -6,6 +6,7 @@ import { logout } from "../store/auth";
 import { clearCart } from "../store/cart";
 import "../components/Styles/Navbar.css";
 import { fetchUser } from "../store/user";
+import { conformCart } from "./helpfunctions/conformCart";
 
 
 const Navbar = () => {
@@ -24,6 +25,11 @@ const Navbar = () => {
     dispatch(clearCart());
   };
 
+  if (!window.localStorage.getItem("cart")) {
+    window.localStorage.setItem("cart", "[]");
+  }
+  const localCart = JSON.parse(window.localStorage.getItem('cart'))
+
   return (
     <div className="header">
       <Link to="/">
@@ -40,7 +46,7 @@ const Navbar = () => {
         <li>
           <Link to="/cart">
             Cart{"  "}
-            <FaShoppingCart />
+            <FaShoppingCart /> {localCart.length}
           </Link>
         </li>
         <li>

@@ -15,6 +15,7 @@ export class SingleProduct extends React.Component{
       <div className="wrapper">
         <div>
         <SingleProductViewCard name = {singleProduct.name}
+        product = {singleProduct}
         imageURL = {singleProduct.imageURL} price ={singleProduct.price} description ={singleProduct.description}/>
         </div>
       </div>

@@ -13,6 +13,9 @@ import EditProduct from "./components/EditProduct";
 import EditUser from "./components/EditUser";
 import UserDash from "./components/UserDash";
 import Checkout from "./components/Checkout";
+import OrderHistory from "./components/OrderHistory";
+
+
 
 /**
  * COMPONENT
@@ -33,7 +36,7 @@ class Routes extends Component {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/checkout" component={Checkout} />
-          <Route exact path="/products/single/:id" component={SingleProduct} />
+          <Route path="/products/single/:id" component={SingleProduct} />
           <Route exact path="/products" component={AllProduct} />
           <Route path="/products/:category" component={AllProduct} />
           <Route path="/admin" component={AdminDash} />
@@ -41,6 +44,7 @@ class Routes extends Component {
           <Route path="/new-product" component={NewProductForm} />
           <Route path="/edit-product/:id" component={EditProduct} />
           <Route path="/edit-user/:id" component={EditUser} />
+          <Route path="/userhistory" component={OrderHistory} />
         </Switch>
       </div>
     );
