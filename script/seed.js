@@ -285,6 +285,11 @@ const seedOrderProduct = [
     productId: 5,
     quantity: 1,
   },
+  {
+    orderId: 3,
+    productId: 5,
+    quantity: 1,
+  },
 ];
 
 // seed function
