@@ -1,24 +1,18 @@
 import React, { useEffect, state, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import { cartQuantity, fetchCart } from "../store/cart";
 import { conformCart } from "./helpfunctions/conformCart";
-
 import "../components/Styles/cart.css"
 
 
 const Cart = () => {
   const [qty, setQty] = useState({});
   const { cart } = useSelector((state) => state);
-
-  console.log(cart)
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(cartQuantity());
     dispatch(fetchCart());
-
     setLoaded(true);
   }, [qty]);
   const [loaded, setLoaded] = useState(false);

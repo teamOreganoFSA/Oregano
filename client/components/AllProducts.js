@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
 import { fetchAllProducts } from "../store/allProducts";
-import { Link } from "react-router-dom";
+
 
 export class AllProducts extends React.Component {
   componentDidMount() {
@@ -11,7 +11,6 @@ export class AllProducts extends React.Component {
 
   render() {
     const products = this.props.products;
-    console.log(products);
     return (
       <div className="wrapper">
         <div>
