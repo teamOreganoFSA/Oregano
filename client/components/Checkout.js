@@ -18,7 +18,7 @@ const Checkout = () => {
   console.log("Printing user: ", cart);
 
   return (
-    <div>
+    <div style={{margin:"2rem"}}>
       <h3>Checkout</h3>
       <div className="shipping">
         <h5>Name</h5>
@@ -44,6 +44,7 @@ const Checkout = () => {
       </div>
       {/* hook up to place order */}
       <button
+      style={{float:"right"}}
         onClick={() => {
           dispatch(checkOut());
           window.alert(`Thank you for your order!${auth.firstName}`);

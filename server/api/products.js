@@ -85,7 +85,7 @@ router.post("/:productId/auth", requireToken, async (req, res, next) => {
           },
         }
       );
-      res.json(forQuantity);
+      res.json(product);
     } else {
       res.json(result);
     }

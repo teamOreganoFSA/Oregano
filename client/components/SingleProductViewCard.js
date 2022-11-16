@@ -8,7 +8,7 @@ const SingleProductViewCard = (props) => {
   const { auth } = useSelector((state) => state);
 
   return (
-    <div class>
+    <div>
       <div className="card" data-aos="zoom-in" data-aos-duration="1500">
         <div className="inner">
           <img className="card_image" src={props.imageURL}></img>

@@ -36,12 +36,12 @@ const Cart = (props) => {
   if (!window.localStorage.getItem("cart")) {
     window.localStorage.setItem("cart", "[]");
   }
+  
   const localCart = JSON.parse(window.localStorage.getItem("cart"));
   const newCart = conformCart(localCart);
   const cartToRender = token ? cart : newCart || [];
 
   let totalPrice = 0
-
   return loaded ? (
     <div style={{ margin: "2rem" }}>
       <h1>Your Cart</h1>

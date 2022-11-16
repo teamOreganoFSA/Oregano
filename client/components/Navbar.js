@@ -6,14 +6,14 @@ import { logout } from "../store/auth";
 import { clearCart } from "../store/cart";
 import "../components/Styles/Navbar.css";
 import { fetchUser } from "../store/user";
-import { conformCart } from "./helpfunctions/conformCart";
+
+
 
 
 const Navbar = () => {
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
   const newUser = useSelector((state)=>state.user) 
- 
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +28,14 @@ const Navbar = () => {
   if (!window.localStorage.getItem("cart")) {
     window.localStorage.setItem("cart", "[]");
   }
-  const localCart = JSON.parse(window.localStorage.getItem('cart'))
+
+  // let token = JSON.parse(window.localStorage.getItem('cart'))
+  // if(token){
+  //   cart.length
+  // }else{
+    //use non-conform cart length
+  // }
+
 
   return (
     <div className="header">
@@ -46,7 +53,7 @@ const Navbar = () => {
         <li>
           <Link to="/cart">
             Cart{"  "}
-            <FaShoppingCart /> {localCart.length}
+            <FaShoppingCart /> {cart.length}
           </Link>
         </li>
         <li>
