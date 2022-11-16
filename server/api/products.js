@@ -70,6 +70,7 @@ router.post("/:productId/auth", requireToken, async (req, res, next) => {
     const [order] = await Order.findOrCreate({
       where: {
         userId: req.user.id,
+        isCart: true,
       },
     });
     const product = await Product.findByPk(req.params.productId);
