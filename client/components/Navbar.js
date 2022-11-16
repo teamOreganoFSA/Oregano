@@ -7,7 +7,7 @@ import { clearCart } from "../store/cart";
 import "../components/Styles/Navbar.css";
 
 const Navbar = () => {
-  const auth = useSelector((state) => state.auth);
+  const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
@@ -36,14 +36,14 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          {auth.email ? (
+          {user.email ? (
             <>
-              <p>Welcome {auth.firstName}</p>
-              {auth.userType === "ADMIN" && (
+              <p>Welcome {user.firstName}</p>
+              {user.userType === "ADMIN" && (
                 <Link to="/admin">Admin Dashboard</Link>
               )}
-              {auth.userType === "USER" && (
-                <Link to={`/user/${auth.id}`}>User Dashboard</Link>
+              {user.userType === "USER" && (
+                <Link to={`/user/${user.id}`}>User Dashboard</Link>
               )}
               <button
                 onClick={() => {

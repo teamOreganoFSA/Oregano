@@ -17,7 +17,7 @@ margin:1rem;
   font-size: 58px;
   line-height: 72px;
   text-align: center;
-  letter-spacing: 1.5px; 
+  letter-spacing: 1.5px;
   position:absolute;
   top:50%;
   left:50%;
@@ -46,13 +46,13 @@ margin:1rem;
   max-width: 100%;
   text-align: center;
   margin: 3rem ;
-  padding: 2rem; 
+  padding: 2rem;
 }
 #men {
 
   box-sizing: border-box;
   position: absolute;
-  top:120%;
+  top:100%;
   left:30%;
   width: 175px;
   height: 45px;
@@ -72,7 +72,7 @@ margin:1rem;
 
   box-sizing: border-box;
   position: absolute;
-  top:120%;
+  top:100%;
   left:60%;
   width: 175px;
   height: 45px;
@@ -85,15 +85,15 @@ margin:1rem;
   border-radius: 2px;
   font-family: "Lobster";
   font-weight: bolder;
-  font-style: italic; 
-  }  
+  font-style: italic;
+  }
 
 /* .homePage body{
   margin: -1rem;
   padding: 1rem;
 } */
 
-body span{
+section span{
   position: relative;
   display:  flex;
   width: 180px;
@@ -103,7 +103,7 @@ body span{
   left:47%;
   transform:translate(-50%,-50%);
 }
-  body .shopnow{
+  section .shopnow{
   position:relative;
   align-content: center;
   font-size: 19px;
@@ -112,10 +112,10 @@ body span{
   transform: translateZ(-25px);
   transition: transform .25s;
   font-family: 'Montserrat', sans-serif;
-  
+
 }
-body span .shopnow:before,
- body span .shopnow:after{
+section span .shopnow:before,
+ section span .shopnow:after{
   position: absolute;
   content: "Shop Now";
   height: 55px;
@@ -127,15 +127,15 @@ body span .shopnow:before,
   box-sizing: border-box;
   border-radius: 5px;
 }
-body span .shopnow:before{
+section span .shopnow:before{
   color: #fff;
   background: #000;
   transform: rotateY(0deg) translateZ(25px);
 }
-body span .shopnow:after{
+section span .shopnow:after{
   color: #000;
   transform: rotateX(90deg) translateZ(25px);
 }
-body span .shopnow:hover{
+section span .shopnow:hover{
   transform: translateZ(-25px) rotateX(-90deg);
 }
