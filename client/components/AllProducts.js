@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 export class AllProducts extends React.Component {
   componentDidMount() {
+    window.scrollTo({ behavior: "smooth", top: "0px" });
     this.props.fetchAllProducts(this.props.match.params.category);
   }
 

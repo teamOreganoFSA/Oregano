@@ -8,6 +8,7 @@ background-size: cover;
 height:1000px ;
 position:relative;
 margin:1rem;
+
 }
 
 .hero-text h1{
@@ -46,13 +47,17 @@ margin:1rem;
   max-width: 100%;
   text-align: center;
   margin: 3rem ;
-  padding: 2rem;
+  padding:1rem;
+}
+
+#homepage-p{
+  margin:2rem;
+  padding-bottom:5rem;
 }
 #men {
 
   box-sizing: border-box;
   position: absolute;
-  top:100%;
   left:30%;
   width: 175px;
   height: 45px;
@@ -72,7 +77,6 @@ margin:1rem;
 
   box-sizing: border-box;
   position: absolute;
-  top:100%;
   left:60%;
   width: 175px;
   height: 45px;

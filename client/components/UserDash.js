@@ -14,10 +14,10 @@ const UserDash = () => {
 
 
   return (
-    <div className="dash-container">
-      <div className="products-container">
-          <div key={user.id} className="single-product">
-            <p>{user.firstName} {user.lastName}</p>
+    <div className="dash-container"  >
+      <div style={{margin:"2rem", padding:"2rem"}}>
+          <div key={user.id} className="single-product" style={{padding:"2rem", backgroundColor:"rgb(60, 184, 106)"}} >
+            <h3 style={{padding:"1rem"}}>{user.firstName} {user.lastName}</h3>
             <Link to={`/edit-user/${user.id}`}>
               <button>Edit User</button>
             </Link>

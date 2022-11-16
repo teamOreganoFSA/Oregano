@@ -90,7 +90,8 @@ const EditProduct = (props) => {
             value={formValues.imageURL}
           />
         </div>
-        <button type="submit">Save Changes</button>
+        <button type="submit" style={{margin:"0 2rem"}}>Save Changes</button>
+       
         <button onClick = {()=>{removeHandler()}}>Remove Product</button>
       </form>
       <img
