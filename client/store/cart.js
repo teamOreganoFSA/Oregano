@@ -145,16 +145,18 @@ export const deleteItem = (id) => {
         },
       };
       const updatedCart = await axios.delete("/api/cart/auth", config);
-      console.log("Printing updated cart: ", updatedCart);
       dispatch(_deleteItem(updatedCart));
+    } else {
+      const existingCart =
+        JSON.parse(window.localStorage.getItem("cart")) || [];
+      console.log("Printing updated cart: ", existingCart);
+      const newCart = existingCart.reduce((accumulator, currentValue) => {
+        if (currentValue.id !== id) {
+          return [...accumulator, currentValue];
+        } else return accumulator;
+      }, []);
+      window.localStorage.setItem("cart", JSON.stringify(newCart));
     }
-    const existingCart = JSON.parse(window.localStorage.getItem("cart")) || [];
-    existingCart.reduce((prev, curr) => {
-      if (curr.id === id) {
-        return [...prev, curr];
-      }
-    }, []);
-    window.localStorage.setItem("cart", JSON.stringify(existingCart));
   };
 };
 
@@ -191,7 +193,7 @@ export default function (state = [], action) {
     case CLEAR_CART:
       return [];
     case DELETE_ITEM:
-      return action.updatedCart;
+      return [action.updatedCart];
     default:
       return state;
   }
