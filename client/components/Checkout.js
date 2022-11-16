@@ -37,7 +37,7 @@ const Checkout = () => {
       </div>
       <div className="order">
         <h5>Review items and shipping</h5>
-        <Cart isCheckout={true} />
+        <Cart isCheckout={false} />
         <Link to="/cart">
           <button>Edit cart</button>
         </Link>
@@ -47,7 +47,6 @@ const Checkout = () => {
         onClick={() => {
           dispatch(checkOut());
           window.alert(`Thank you for your order!${auth.firstName}`);
-
         }}
       >
         Place your order

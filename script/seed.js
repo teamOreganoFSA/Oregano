@@ -6,7 +6,6 @@ const {
 
 const seedUsers = [
   {
-    id: 1,
     address: "123 main st",
     userType: "ADMIN",
     firstName: "Adam",
@@ -15,7 +14,6 @@ const seedUsers = [
     password: "pw1",
   },
   {
-    id: 2,
     address: "1 oak rd",
     userType: "USER",
     firstName: "Clark",
@@ -24,7 +22,6 @@ const seedUsers = [
     password: "pw2",
   },
   {
-    id: 3,
     address: "23 Long rd",
     userType: "USER",
     firstName: "John",
@@ -33,7 +30,6 @@ const seedUsers = [
     password: "pw3",
   },
   {
-    id: 4,
     address: "45 franklin ave",
     userType: "USER",
     firstName: "Jill",
@@ -42,7 +38,6 @@ const seedUsers = [
     password: "pw4",
   },
   {
-    id: 5,
     address: "7 john st",
     userType: "USER",
     firstName: "Jan",
@@ -238,54 +233,54 @@ const seedProducts = [
   },
 ];
 
-// Oders seed
-const seedOrders = [
-  {
-    id: 1,
-    date: "2022-11-09 12:55:26",
-    isCart: true,
-    userId: 1,
-  },
-  {
-    id: 2,
-    date: "2022-11-09 10:01:04",
-    isCart: true,
-    userId: 2,
-  },
-];
+// // Oders seed
+// const seedOrders = [
+//   {
+//     id: 1,
+//     date: "2022-11-09 12:55:26",
+//     isCart: true,
+//     userId: 1,
+//   },
+//   {
+//     id: 2,
+//     date: "2022-11-09 10:01:04",
+//     isCart: true,
+//     userId: 2,
+//   },
+// ];
 
-const seedOrderProduct = [
-  {
-    orderId: 1,
-    productId: 1,
-    quantity: 2,
-  },
-  {
-    orderId: 1,
-    productId: 4,
-    quantity: 1,
-  },
-  {
-    orderId: 1,
-    productId: 2,
-    quantity: 3,
-  },
-  {
-    orderId: 2,
-    productId: 2,
-    quantity: 2,
-  },
-  {
-    orderId: 2,
-    productId: 3,
-    quantity: 4,
-  },
-  {
-    orderId: 2,
-    productId: 5,
-    quantity: 1,
-  },
-];
+// const seedOrderProduct = [
+//   {
+//     orderId: 1,
+//     productId: 1,
+//     quantity: 2,
+//   },
+//   {
+//     orderId: 1,
+//     productId: 4,
+//     quantity: 1,
+//   },
+//   {
+//     orderId: 1,
+//     productId: 2,
+//     quantity: 3,
+//   },
+//   {
+//     orderId: 2,
+//     productId: 2,
+//     quantity: 2,
+//   },
+//   {
+//     orderId: 2,
+//     productId: 3,
+//     quantity: 4,
+//   },
+//   {
+//     orderId: 2,
+//     productId: 5,
+//     quantity: 1,
+//   },
+// ];
 
 // seed function
 const seed = async () => {
@@ -301,16 +296,16 @@ const seed = async () => {
         return Product.create(prod);
       })
     );
-    await Promise.all(
-      seedOrders.map((order) => {
-        return Order.create(order);
-      })
-    );
-    await Promise.all(
-      seedOrderProduct.map((orderProd) => {
-        return OrderProduct.create(orderProd);
-      })
-    );
+    // await Promise.all(
+    //   seedOrders.map((order) => {
+    //     return Order.create(order);
+    //   })
+    // );
+    // await Promise.all(
+    //   seedOrderProduct.map((orderProd) => {
+    //     return OrderProduct.create(orderProd);
+    //   })
+    // );
   } catch (err) {
     console.error(err);
   }
