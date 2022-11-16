@@ -6,6 +6,8 @@ import { conformCart } from "../components/helpfunctions/conformCart";
 const FETCH_CART = "FETCH_CART";
 const ADD_TO_CART = "ADD_TO_CART";
 const CLEAR_CART = "CLEAR_CART";
+const ORDER_HISTORY = "ORDER_HISTORY";
+const CHECKOUT = "CHECKOUT";
 const DELETE_ITEM = "DELETE_ITEM";
 
 /**
@@ -28,6 +30,16 @@ export const _clearCart = () => ({
 const _deleteItem = (updatedCart) => ({
   type: DELETE_ITEM,
   updatedCart,
+});
+
+const _orderHistory = (order) => ({
+  type: ORDER_HISTORY,
+  order,
+});
+
+const _checkOut = () => ({
+  type: CHECKOUT,
+  cart,
 });
 
 /**
@@ -98,6 +110,26 @@ export const fetchCart = () => {
   };
 };
 
+export const orderHistory = () => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem("token");
+
+    try {
+      if (token) {
+        const config = {
+          headers: {
+            authorization: token,
+          },
+        };
+        const { data } = await axios.get("");
+      }
+    } catch (err) {
+      console.log("No order hstory.");
+      console.error(err);
+    }
+  };
+};
+
 export const addToCart = (product) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
@@ -154,6 +186,21 @@ export const deleteItem = (id) => {
         } else return accumulator;
       }, []);
       window.localStorage.setItem("cart", JSON.stringify(newCart));
+    }
+  };
+};
+
+export const checkOut = () => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem("token");
+    if (token) {
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      await axios.put("/api/checkout", {}, config);
+      dispatch(_fetchCart());
     }
   };
 };
