@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <div className="header">
       <Link to="/">
-        <img src="/picture/logo.png"></img>
+        <img src="/logo.png"></img>
       </Link>
 
       <ul className="nav-menu">
