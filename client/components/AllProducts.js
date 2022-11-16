@@ -12,10 +12,10 @@ export class AllProducts extends React.Component {
   render() {
     const products = this.props.products;
     return (
-      <div className="wrapper">
+      <div className="">
         <div>
           {products.map((product) => (
-            <div key={product.id}>
+            <div key={product.id} className="">
               <Card
                 product={product}
                 imageURL={product.imageURL}
