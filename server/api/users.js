@@ -25,6 +25,15 @@ router.get("/:userId", requireToken, async (req, res, next) => {
   }
 });
 
+router.get("/", requireToken, async (req, res, next) => {
+  try {
+    const allUsers = await User.findAll();
+    res.send(allUsers);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // Edit user // PUT /api/users/:userId
 router.put("/:userId", requireToken, async (req, res, next) => {
   try {
@@ -67,5 +76,3 @@ router.delete("/:userId", requireToken, async (req, res, next) => {
 //       }
 //    }
 // })
-
-
