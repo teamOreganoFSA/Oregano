@@ -12,7 +12,6 @@ export class AllProducts extends React.Component {
 
   render() {
     const products = this.props.products;
-    console.log(products);
     return (
       <div className="wrapper">
         <div className="grid-container">
