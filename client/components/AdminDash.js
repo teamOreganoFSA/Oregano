@@ -9,7 +9,7 @@ const AdminDash = () => {
   const { allProducts } = useSelector((state) => state);
   const [allUsers, setAllUsers] = useState([]);
   const dispatch = useDispatch();
-
+console.log(allProducts)
   useEffect(() => {
     dispatch(fetchAllProducts());
     fetchAllUsers();
@@ -28,14 +28,14 @@ const AdminDash = () => {
     }
   };
 
-  console.log("allUsers", allUsers);
+
   return (
-    <div className="dash-container">
-      <div className="products-container">
+    <div className="dash-container" style={{margin:"2rem"}}>
+      <div className="products-container" style = {{margin:"50px", padding:"50px", height:"40vh"}}>
         {allProducts.map((product) => (
-          <div key={product.id} className="single-product">
+          <div key={product.id} className="single-product" style={{padding:"2rem"}}>
             <p>{product.name}</p>
-            <img src={product.imageURL} alt={product.description} />
+            <img src={product.imageURL} alt={product.description} style={{height :"150px"}} />
             <Link to={`/edit-product/${product.id}`}>
               <button>Edit Product</button>
             </Link>

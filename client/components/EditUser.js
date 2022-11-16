@@ -11,7 +11,6 @@ const EditUser = () => {
   const dispatch = useDispatch();
 
   const {user} = useSelector((state) => state);
-  const newUser = useSelector((state) => state.user);
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
@@ -50,7 +49,7 @@ const EditUser = () => {
   return (
     <div
       className="signupForm"
-      style={{ backgroundColor: "green", display: "flex" }}
+      style={{ backgroundColor: "green", display: "flex",margin:'1rem'}}
     >
       <h2>Edit User Form</h2>
       <form onSubmit={handleSubmit}>
