@@ -36,6 +36,7 @@ const Cart = (props) => {
   };
 
   const token = window.localStorage.getItem("token");
+
   if (!window.localStorage.getItem("cart")) {
     window.localStorage.setItem("cart", "[]");
   }
