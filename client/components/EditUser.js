@@ -11,8 +11,9 @@ const EditUser = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.auth);
+  const newUser = useSelector((state) => state.user);
   const [formValues, setFormValues] = useState({
-    firstName: "" ,
+    firstName: "",
     lastName: "",
     email: "",
     password: "",
@@ -27,10 +28,8 @@ const EditUser = () => {
       password: user.password,
       address: user.address,
     });
-  }, [])
-    
-  
-  
+  }, [newUser]);
+
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
@@ -40,11 +39,7 @@ const EditUser = () => {
     try {
       const token = window.localStorage.getItem("token");
       const config = { headers: { authorization: token } };
-      await axios.put(
-        `/api/users/${user.id}`,
-        formValues,
-        config
-      );
+      await axios.put(`/api/users/${user.id}`, formValues, config);
       history.push(`/user/${user.id}`);
     } catch (error) {
       console.log(error);
