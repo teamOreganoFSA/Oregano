@@ -21,15 +21,19 @@ const Checkout = () => {
     <div>
       <h3>Checkout</h3>
       <div className="shipping">
+        <h5>Name</h5>
         <h4>
           {auth.firstName} {auth.lastName}
         </h4>
+        {!auth.firstName && <input />}
         <h5>Shipping address</h5>
+        {!auth.firstName && <input />}
         <p>{auth.address}</p>
       </div>
       <div className="payment">
         <h5>Payment method</h5>
         <p>{auth.id}</p>
+        {!auth.firstName && <input />}
       </div>
       <div className="order">
         <h5>Review items and shipping</h5>
@@ -41,7 +45,9 @@ const Checkout = () => {
       {/* hook up to place order */}
       <button
         onClick={() => {
-          window.alert(`Thank you for your order!${auth.firstName}`);
+          window.alert(
+            `Thank you for your order, ${auth.firstName || "Guest"}!`
+          );
         }}
       >
         Place your order
