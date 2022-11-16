@@ -20,7 +20,9 @@ const requireToken = async (req, res, next) => {
 // GET /api/admin/users
 router.get("/users", requireToken, async (req, res, next) => {
   if (req.admin.id) {
-    const users = User.findAll({ attributes: ["id", "email"] });
+    const users = User.findAll({
+      attributes: ["id", "firstName", "lastName", "email"],
+    });
     res.json(users);
   }
 });

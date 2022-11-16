@@ -12,6 +12,7 @@ import SingleProduct from "./components/SingleProduct";
 import EditProduct from "./components/EditProduct";
 import EditUser from "./components/EditUser";
 import UserDash from "./components/UserDash";
+import Checkout from "./components/Checkout";
 
 /**
  * COMPONENT
@@ -31,11 +32,12 @@ class Routes extends Component {
           <Route path="/cart" component={Cart} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route path="/checkout" component={Checkout} />
           <Route exact path="/products/single/:id" component={SingleProduct} />
           <Route exact path="/products" component={AllProduct} />
           <Route path="/products/:category" component={AllProduct} />
           <Route path="/admin" component={AdminDash} />
-          <Route path ="/user" component={UserDash}/>
+          <Route path="/user" component={UserDash} />
           <Route path="/new-product" component={NewProductForm} />
           <Route path="/edit-product/:id" component={EditProduct} />
           <Route path="/edit-user/:id" component={EditUser} />

@@ -9,16 +9,15 @@ const Card = (props) => {
   const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
   return (
-    <div className = "grid-container" data-aos="zoom-in" data-aos-duration="1500">
-        <div className="card">
+    <div data-aos="zoom-in" data-aos-duration="1500">
+      <div className="card">
         <div>
           <div>
-            <div className="inner" >
-            <img src ={product.imageURL}></img>
+            <div className="inner">
+              <img src={product.imageURL}></img>
             </div>
             <h1>{product.name}</h1>
             <p>$ {product.price}</p>
-            <p>{product.description}</p>
             <button
               onClick={() => dispatch(addToCart(product, auth.id))}
               className="card_btn"

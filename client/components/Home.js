@@ -1,42 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../components/Styles/HomePage.css"
-/**
- * COMPONENT
- */
+import "../components/Styles/HomePage.css";
+
 export const Home = () => {
   return (
-    <div className="homePage">
-      <div className="homePage-Img">
-        <img
-          src="https://content.asos-media.com/-/media/homepages/unisex/generic-hp/september-2022/microsoftteams-image-169---dt--.png"
-          alt="homepage"
-        ></img>
-        <h1>This is Oregano</h1>
-        <h3>Live Organically</h3>
+    <body>
+      <div className="hero-image">
+        <div className="hero-text">
+          <h1>This is Oregano</h1>
+          <h3>Live Organically</h3>
+        </div>
       </div>
-      <div className="shop">
-        <Link to="/products/MEN">
-          <h3 id="men">Shop Men</h3>
-        </Link>
-        <Link to="/products/WOMEN">
-          <h3 id="women">Shop Women</h3>
-        </Link>
-      </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+
+      <Link to="/products/MEN">
+        <h3 id="men">Shop Men</h3>
+      </Link>
+      <Link to="/products/WOMEN">
+        <h3 id="women">Shop Women</h3>
+      </Link>
+
       <div
+        className="oregano"
         data-aos="fade-right"
         data-aos-offset="250"
         data-aos-easing="ease-in-sine"
         data-aos-duration="1000"
       >
-        <h2>What Is Oregano?</h2>
-
+        <h2 id="oregano">What Is Oregano?</h2>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -49,22 +39,13 @@ export const Home = () => {
           including versions of Lorem Ipsum.
         </p>
       </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
 
       <div className="shop">
-        <div>
-          <span>
-            <Link to="/products" className="shopnow" />
-          </span>
-        </div>
-        <br></br>
-        <br></br>
-        <br></br>
+        <span>
+          <Link to="/products" className="shopnow" />
+        </span>
       </div>
-    </div>
+    </body>
   );
 };
 
