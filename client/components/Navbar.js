@@ -1,16 +1,24 @@
-import React from "react";
+import React,  { useEffect }from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart, FaHome, FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store/auth";
 import { clearCart } from "../store/cart";
 import "../components/Styles/Navbar.css";
+import { fetchUser } from "../store/user";
+
 
 const Navbar = () => {
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
-
+  const newUser = useSelector((state)=>state.user) 
+ 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  },[]);
+
   const logoutHandler = () => {
     dispatch(logout());
     dispatch(clearCart());
@@ -38,7 +46,7 @@ const Navbar = () => {
         <li>
           {user.email ? (
             <>
-              <p>Welcome {user.firstName}</p>
+              <p>Welcome {newUser.firstName}</p>
               {user.userType === "ADMIN" && (
                 <Link to="/admin">Admin Dashboard</Link>
               )}
