@@ -55,7 +55,7 @@ const seedUsers = [
 // Products seed
 const seedProducts = [
   {
-    id: 1,
+    // id: 1,
     category: "MEN",
     name: "Bamboo Pants",
     description: "Pants made out of bamboo",
@@ -65,7 +65,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/6_9a82250e-1b30-4aa7-8983-c1eb9627d491.jpg?v=1667418844&width=1800",
   },
   {
-    id: 2,
+    // id: 2,
     category: "WOMEN",
     name: "Bamboo Skirt",
     description: "Skirt made out of bamboo",
@@ -75,7 +75,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/11_c7d6c37f-c61d-42ad-9c06-583b7f2ddfbf.jpg?v=1667420871&width=1800",
   },
   {
-    id: 3,
+    // id: 3,
     category: "WOMEN",
     name: "Bamboo Longsleeve Shirt",
     description: "Long sleeve shirt made out of bamboo",
@@ -85,7 +85,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/10_af628f73-9a91-4cae-b51b-f0d3e0429494.jpg?v=1663864434&width=1800",
   },
   {
-    id: 4,
+    // id: 4,
     category: "MEN",
     name: "Silk T-shirt",
     description: "T-shirt made from silk.",
@@ -95,7 +95,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/RC1210M_HEATHEREDGREY_244_712eebd3-676b-4aba-8877-af5530485149.jpg?v=1655328410&width=1800",
   },
   {
-    id: 5,
+    // id: 5,
     category: "WOMEN",
     name: "Kale Shirt",
     description: "Eco-friendly Shirt made from kale.",
@@ -105,7 +105,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/22_05e19973-563e-435a-99a5-afc18b315835.jpg?v=1667421008&width=1800",
   },
   {
-    id: 6,
+    // id: 6,
     category: "MEN",
     name: "Recycled Hoodie",
     description: "Hoodie made from recycled materials",
@@ -115,7 +115,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/18_c600c1b0-64eb-485f-94a8-b322191b08d5.jpg?v=1667418905&width=1800",
   },
   {
-    id: 7,
+    // id: 7,
     category: "MEN",
     name: "Sweater for Men",
     description: "Sweater made from recycled clothes.",
@@ -125,7 +125,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/9_d0c2b564-c0e0-44f6-8581-178cb91ffe9c.jpg?v=1666276086&width=1800",
   },
   {
-    id: 8,
+    // id: 8,
     category: "WOMEN",
     name: "Recycled Cotton t-shirt",
     description: "Cotton t-shirt for women made from recycled materials.",
@@ -135,7 +135,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/3_8d83a9d1-d2b1-4cdc-b3f0-1b0f45cda5c5.jpg?v=1659566207&width=1800",
   },
   {
-    id: 9,
+    // id: 9,
     category: "WOMEN",
     name: "Button down long sleeve shirt",
     description:
@@ -146,7 +146,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/59_8c1d9ce0-61de-4648-94ba-63cd2bb8e7f6.jpg?v=1661529250&width=1800",
   },
   {
-    id: 10,
+    // id: 10,
     category: "MEN",
     name: "Recycled cotton t-shirt",
     description: "Cotton t-shirt made from recycled clothing.",
@@ -156,7 +156,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/DAY02_S01210_BLACK_093_99dafa7c-9780-416c-bbce-570aeda9db24.jpg?v=1666631727&width=1800",
   },
   {
-    id: 11,
+    // id: 11,
     category: "WOMEN",
     name: "Women Joggers",
     description: "Recycled fleece joggers for women",
@@ -166,7 +166,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/29_ccd0b5df-0bca-4b8c-b58c-ed64ded2d3df.jpg?v=1659564501&width=1800",
   },
   {
-    id: 12,
+    // id: 12,
     category: "MEN",
     name: "Recycled button down Long sleeve",
     description:
@@ -177,7 +177,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/1_FRONT_bc1962cf-d0b5-41d7-91d0-53e12dab741d.jpg?v=1664914847&width=1800",
   },
   {
-    id: 13,
+    // id: 13,
     category: "WOMEN",
     name: "Recycled Denim Overalls",
     description: "Womens overalls made from recycled denim",
@@ -187,7 +187,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/81.jpg?v=1659648533&width=1800",
   },
   {
-    id: 14,
+    // id: 14,
     category: "MEN",
     name: "Zip-up Hoodie",
     description: "Zip-up hoodie made from recycled materials",
@@ -197,7 +197,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/17_ee811f73-dcfb-4710-b123-88fc0d0d54b9.jpg?v=1666276545&width=1800",
   },
   {
-    id: 15,
+    // id: 15,
     category: "MEN",
     name: "Where's Waldo Short sleeve",
     description: "Men ",
@@ -207,7 +207,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/21_4f16ede5-b62c-4edf-907a-3f7876fd4647.jpg?v=1660932083&width=1800",
   },
   {
-    id: 16,
+    // id: 16,
     category: "MEN",
     name: "Men's Field Jacket",
     description: "Men's field jacket made from recycled and organic materials.",
@@ -217,7 +217,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/330029U_BLACK_296_6e61645a-8e50-42ef-85f9-fb98b6f04abb.jpg?v=1655908923&width=1800",
   },
   {
-    id: 17,
+    // id: 17,
     category: "MEN",
     name: "Men's Joggers",
     description: "Men's joggers made from recycled materials.",
@@ -227,7 +227,7 @@ const seedProducts = [
       "https://cdn.shopify.com/s/files/1/0503/2601/2056/products/650010M_BLACK_150.jpg?v=1649271642&width=1800",
   },
   {
-    id: 18,
+    // id: 18,
     category: "MEN",
     name: "Men's Jogger Shorts",
     description: "Men's jogger shorts made from recycled materials.",
@@ -239,58 +239,58 @@ const seedProducts = [
 ];
 
 // Oders seed
-const seedOrders = [
-  {
-    id: 1,
-    date: "2022-11-09 12:55:26",
-    isCart: true,
-    userId: 1,
-  },
-  {
-    id: 2,
-    date: "2022-11-09 10:01:04",
-    isCart: true,
-    userId: 2,
-  },
-];
+// const seedOrders = [
+//   {
+//     id: 1,
+//     date: "2022-11-09 12:55:26",
+//     isCart: true,
+//     userId: 1,
+//   },
+//   {
+//     id: 2,
+//     date: "2022-11-09 10:01:04",
+//     isCart: true,
+//     userId: 2,
+//   },
+// ];
 
-const seedOrderProduct = [
-  {
-    orderId: 1,
-    productId: 1,
-    quantity: 2,
-  },
-  {
-    orderId: 1,
-    productId: 4,
-    quantity: 1,
-  },
-  {
-    orderId: 1,
-    productId: 2,
-    quantity: 3,
-  },
-  {
-    orderId: 2,
-    productId: 2,
-    quantity: 2,
-  },
-  {
-    orderId: 2,
-    productId: 3,
-    quantity: 4,
-  },
-  {
-    orderId: 2,
-    productId: 5,
-    quantity: 1,
-  },
-  {
-    orderId: 3,
-    productId: 5,
-    quantity: 1,
-  },
-];
+// const seedOrderProduct = [
+//   {
+//     orderId: 1,
+//     productId: 1,
+//     quantity: 2,
+//   },
+//   {
+//     orderId: 1,
+//     productId: 4,
+//     quantity: 1,
+//   },
+//   {
+//     orderId: 1,
+//     productId: 2,
+//     quantity: 3,
+//   },
+//   {
+//     orderId: 2,
+//     productId: 2,
+//     quantity: 2,
+//   },
+//   {
+//     orderId: 2,
+//     productId: 3,
+//     quantity: 4,
+//   },
+//   {
+//     orderId: 2,
+//     productId: 5,
+//     quantity: 1,
+//   },
+//   {
+//     orderId: 3,
+//     productId: 5,
+//     quantity: 1,
+//   },
+// ];
 
 // seed function
 const seed = async () => {
@@ -306,16 +306,16 @@ const seed = async () => {
         return Product.create(prod);
       })
     );
-    await Promise.all(
-      seedOrders.map((order) => {
-        return Order.create(order);
-      })
-    );
-    await Promise.all(
-      seedOrderProduct.map((orderProd) => {
-        return OrderProduct.create(orderProd);
-      })
-    );
+    // await Promise.all(
+    //   seedOrders.map((order) => {
+    //     return Order.create(order);
+    //   })
+    // );
+    // await Promise.all(
+    //   seedOrderProduct.map((orderProd) => {
+    //     return OrderProduct.create(orderProd);
+    //   })
+    // );
   } catch (err) {
     console.error(err);
   }

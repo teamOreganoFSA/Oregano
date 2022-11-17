@@ -21,8 +21,6 @@ const EditProduct = (props) => {
     loadProduct(props.match.params.id)
   }, []);
 
-  
-
   const loadProduct = async (id) => {
     const { data } = await axios.get(`/api/products/single/${id}`);
     setFormValues(data);

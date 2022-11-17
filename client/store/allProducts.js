@@ -1,4 +1,6 @@
 import axios from "axios";
+import history from "../history";
+
 /**
  * ACTION TYPES
  */
@@ -43,9 +45,14 @@ export const fetchAllProducts = (category) => {
 
 export const addNewProduct = (product) => {
   return async (dispatch) => {
+    const token = window.localStorage.getItem("token");
     try {
-      const { data } = await axios.post("/api/products", product);
-      dispatch(_addNewProduct(data));
+      if (token) {
+        const config = { headers: { authorization: token } };
+        const { data } = await axios.post("/api/admin", product, config);
+        dispatch(_addNewProduct(data));
+        history.push("/admin")
+      }
     } catch (error) {
       console.log("Unable to add product");
       console.error(error);
@@ -61,7 +68,7 @@ export const deleteProduct = (id) => {
         const { data } = await axios.delete(`/api/admin/${id}`, {
           headers: { authorization: token },
         });
-        console.log("data",data)
+        console.log("data", data);
         dispatch(_deleteProduct(data));
       } catch (error) {
         console.log("Unable to delete product");
@@ -82,7 +89,7 @@ export default function (state = [], action) {
     case ADD_NEW_PRODUCT:
       return [...state, action.product];
     case DELETE_PRODUCT:
-      return action.products
+      return action.products;
     default:
       return state;
   }

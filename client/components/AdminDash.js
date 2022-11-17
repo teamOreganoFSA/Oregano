@@ -49,7 +49,7 @@ console.log(allProducts)
       <div style={{ margin: "15px" }}>
         {allUsers.map((user) => {
           return (
-            <div style={{ backgroundColor: "whitesmoke" }}>
+            <div  key = {user.id} style={{ backgroundColor: "whitesmoke" }}>
               <p>
                 {user.firstName} {user.lastName}
               </p>

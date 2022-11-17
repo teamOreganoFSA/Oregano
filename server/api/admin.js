@@ -39,8 +39,7 @@ router.get("/users", requireToken, async (req, res, next) => {
 router.post("/", requireToken, async (req, res, next) => {
   try {
     if (req.admin.id) {
-      const product = req.body;
-      const addedProduct = Product.create(product);
+      const addedProduct = await Product.create(req.body);
       res.json(addedProduct);
     }
   } catch (err) {
