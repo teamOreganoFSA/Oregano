@@ -6,7 +6,6 @@ const {
 
 const seedUsers = [
   {
-    id: 1,
     address: "123 main st",
     userType: "ADMIN",
     firstName: "Adam",
@@ -15,7 +14,6 @@ const seedUsers = [
     password: "pw1",
   },
   {
-    id: 2,
     address: "1 oak rd",
     userType: "USER",
     firstName: "Clark",
@@ -24,7 +22,6 @@ const seedUsers = [
     password: "pw2",
   },
   {
-    id: 3,
     address: "23 Long rd",
     userType: "USER",
     firstName: "John",
@@ -33,7 +30,6 @@ const seedUsers = [
     password: "pw3",
   },
   {
-    id: 4,
     address: "45 franklin ave",
     userType: "USER",
     firstName: "Jill",
@@ -42,7 +38,6 @@ const seedUsers = [
     password: "pw4",
   },
   {
-    id: 5,
     address: "7 john st",
     userType: "USER",
     firstName: "Jan",
@@ -238,7 +233,9 @@ const seedProducts = [
   },
 ];
 
+
 // Oders seed
+
 // const seedOrders = [
 //   {
 //     id: 1,
@@ -284,12 +281,7 @@ const seedProducts = [
 //     orderId: 2,
 //     productId: 5,
 //     quantity: 1,
-//   },
-//   {
-//     orderId: 3,
-//     productId: 5,
-//     quantity: 1,
-//   },
+//   }
 // ];
 
 // seed function
