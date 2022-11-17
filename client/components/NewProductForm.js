@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addNewProduct } from "../store/allProducts";
+import { Link } from "react-router-dom";
 
 const NewProductForm = () => {
   const dispatch = useDispatch();
@@ -12,13 +13,14 @@ const NewProductForm = () => {
     category: "MEN",
     imageURL: "",
   });
-
+console.log(formValues)
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('submitting>>')
     dispatch(addNewProduct(formValues));
   };
 
@@ -60,8 +62,8 @@ const NewProductForm = () => {
             value={formValues.imageURL}
           />
         </div>
-
-        <button type="submit">Add Product</button>
+      <button type="submit">Add Product</button>
+      
       </form>
     </div>
   );
