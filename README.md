@@ -1,5 +1,6 @@
 # Grace-Shopper
-
+E-Commerce website Oregano focuses on selling organic clothing. check out the rendered site at https://oregano-grace-shopper.onrender.com/
+Youtube walk through demo here https://www.youtube.com/watch?v=aiHeqQPkguE
 ## Setup
 
 * Update project name and description in `package.json`
