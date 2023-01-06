@@ -1,7 +1,12 @@
-# Grace-Shopper
+## Oregano
+<img width="110" alt="Screenshot 2023-01-06 at 12 45 49 PM" src="https://user-images.githubusercontent.com/85711028/211096979-3ef85b69-e549-4a04-b641-4e548037d0fd.png">
+
+## About
 E-Commerce website Oregano focuses on selling organic clothing. check out the rendered site at https://oregano-grace-shopper.onrender.com/
 Youtube walk through demo here https://www.youtube.com/watch?v=aiHeqQPkguE
-## Setup
+
+## Front Page View
+<img width="1440" alt="Screenshot 2023-01-06 at 12 45 21 PM" src="https://user-images.githubusercontent.com/85711028/211097026-19f121cc-287d-41f1-aeca-9161a102f2c3.png">
 
 * Update project name and description in `package.json`
 * `npm install`
