@@ -1,5 +1,5 @@
 ## Oregano
-<img width="110" alt="Screenshot 2023-01-06 at 12 45 49 PM" src="https://user-images.githubusercontent.com/85711028/211096979-3ef85b69-e549-4a04-b641-4e548037d0fd.png">
+<img width="227" alt="Screenshot 2023-01-06 at 12 47 15 PM" src="https://user-images.githubusercontent.com/85711028/211097152-31ed92ee-b74b-4985-816e-880b2b101a05.png">
 
 ## About
 E-Commerce website Oregano focuses on selling organic clothing. check out the rendered site at https://oregano-grace-shopper.onrender.com/
