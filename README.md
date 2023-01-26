@@ -2,7 +2,7 @@
 <img width="227" alt="Screenshot 2023-01-06 at 12 47 15 PM" src="https://user-images.githubusercontent.com/85711028/211097152-31ed92ee-b74b-4985-816e-880b2b101a05.png">
 
 ## About
-The e-commerce website, Oregano, focuses on selling organic clothing for both men and women. We brought together and applied each technology we've learned at the FSA bootcamp in the development of our website. One of our biggest challenges were keeping a record of a guests cart in their local storage and having those items transfer to a user cart once they create or log into an existing account. Visit our deployed site at https://oregano-grace-shopper.onrender.com/ and our video walk through demo at https://www.youtube.com/watch?v=aiHeqQPkguE.
+The e-commerce website, Oregano, focuses on selling organic clothing for both men and women. We brought together and applied each technology we've learned at the FSA bootcamp in the development of our website. One of our biggest challenges were keeping a record of a guests cart in their local storage and having those items transfer to a user cart once they create or log into an account. Visit our deployed site at https://oregano-grace-shopper.onrender.com/ and our video walk through demo at https://www.youtube.com/watch?v=aiHeqQPkguE.
 
 ## Front Page View
 <img width="1440" alt="Screenshot 2023-01-06 at 12 45 21 PM" src="https://user-images.githubusercontent.com/85711028/211097026-19f121cc-287d-41f1-aeca-9161a102f2c3.png">
